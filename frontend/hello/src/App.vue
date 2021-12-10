@@ -1,20 +1,77 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Hoi Jonas!"/>
-  </div>
+  <v-app>
+    <navigation></navigation>
+
+    <!-- Snackbar notifications -->
+    <v-snackbar
+        v-model="showSnackBar"
+        :timeout="timeout"
+        bottom
+        :color="type"
+    >
+        {{ message }}
+        <v-btn
+            icon
+            @click="showSnackBar = false"
+        >
+            <v-icon>mdi-close</v-icon>
+        </v-btn>
+    </v-snackbar>
+
+    <v-content transition="slide-x-transition">
+        <router-view></router-view>
+    </v-content>
+
+  </v-app>
+<script>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import { State, Mutation } from 'vuex-class';
+import { mapState } from 'vuex';
+import Navigation from './components/Navigation.vue';
+import { SnackBarSate } from './store/modules/types';
 
-export default {
-  name: 'App',
+
+@Component({
   components: {
-    HelloWorld
+    navigation: Navigation,
+  },
+})
+
+
+export default class App extends Vue {
+  timeout: number = 3000
+
+  type: string = ''
+
+  showSnackBar: boolean = false
+
+  message: string = ''
+
+  @State('snackbar') snackbar!: SnackBarSate;
+
+  created() {
+    this.setStoreWatchers();
+  }
+
+  setStoreWatchers() {
+    this.$store.watch(state => state.snackbar.snackbarMessage, () => {
+      const snackbarStore = this.$store.state.snackbar;
+      const msg = snackbarStore.snackbarMessage;
+      if (msg !== '') {
+        this.type = snackbarStore.snackbarType;
+        this.message = snackbarStore.snackbarMessage;
+        this.showSnackBar = true;
+        this.$store.commit('snackbar/setSnackBarMessage', { message: '', type: '' });
+      }
+    });
   }
 }
+
 </script>
+
 
 <style>
 #app {

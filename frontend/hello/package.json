@@ -11,7 +11,24 @@
   "dependencies": {
     "@braid/vue-formulate": "^2.5.2",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "axios": "^0.18.0",
+    "dotenv": "^8.2.0",
+    "fuzzyset.js": "0.0.8",
+    "pure-vue-chart": "^0.3.4",
+    "vue-class-component": "^7.0.2",
+    "vue-fuse": "^2.2.0",
+    "vue-localstorage": "^0.6.2",
+    "vue-native-websocket": "^2.0.13",
+    "vue-property-decorator": "^8.3.0",
+    "vue-quick-chat": "^1.0.4",
+    "vue-router": "^3.1.3",
+    "vuetify": "^2.1.12",
+    "vuex": "^3.0.1",
+    "vuex-class": "^0.3.2",
+    "vuex-persist": "^2.2.0",
+    "jest": "^24.9.0"
+
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -30,16 +47,73 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "eslint:recommended"
+      "@vue/airbnb",
+      "@vue/typescript"
     ],
-    "parserOptions": {
-      "parser": "babel-eslint"
+    "rules": {
+      "max-len": [
+        2,
+        200,
+        4,
+        {
+          "ignoreUrls": true
+        }
+      ],
+      "no-param-reassign": [
+        "off"
+      ],
+      "class-methods-use-this": [
+        "off"
+      ],
+      "no-await-in-loop": [
+        "off"
+      ],
+      "consistent-return": [
+        "off"
+      ]
     },
-    "rules": {}
+    "parserOptions": {
+      "parser": "@typescript-eslint/parser"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+    "last 2 versions"
+  ],
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest",
+      ".*\\.(vue)$": "vue-jest",
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testURL": "http://localhost/",
+    "modulePaths": [
+      "<rootDir>/src",
+      "<rootDir>/node_modules"
+    ],
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "preset": "ts-jest/presets/js-with-ts"
+  }
 }
