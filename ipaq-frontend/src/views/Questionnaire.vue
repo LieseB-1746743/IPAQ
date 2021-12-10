@@ -25,6 +25,7 @@ import FormGroup from "@/components/FormGroup/FormGroup.vue";
 })
 export default class Questionnaire extends Vue {
 
+    //TODO: activate validation when clicking NEXT
     // Temp here
     
 
@@ -49,26 +50,36 @@ export default class Questionnaire extends Vue {
             "children": "Student registration"
           },
           {
+            "name":"jobQ",
             "label": "Do you currently have a job or do any unpaid work outside your home?",
-            "name": "name",
+            "type": "radio",
+            "options":{"yes":"YES","no":"NO"},
             "validation": "required"
           },
           {
-            "label": "Your email",
-            "name": "email",
-            "help": "Please use your student email address",
-            "validation": "bail|required|email|ends_with:.edu",
-            "validation-messages": {
-              "ends_with": "Please use a .edu email address"
-            }
+            "name":"vigorous7Q",
+            "label": "During the last 7 days, on how many days did you do vigorous physical activities like heavy lifting, digging, heavy construction, or climbing up stairs <b>as part of your work</b>?\n (enter does not work) Think about only those physical activities that you did for at least 10 minutes at a time.",
+            "type":"select",
+            "value": "0",
+            "options": {
+            "0": "0 days",
+            "1": "1 day",
+            "2": "2 days",
+            "3": "3 days",
+            "4": "4 days",
+            "5": "5 days",
+            "6": "6 days",
+            "7": "7 days",
+            },
+            "validation": "required",
+           
           },
           {
-            "label": "Student ID",
-            "name": "student_id",
-            "help": "Your 6 digit student ID (ex. ST-123421)",
-            "placeholder": "ST-",
-            "validation": "^required|matches:/^ST-[\\d]{6}$/",
-            "validation-name": "Student ID"
+            "name": "vigorousTimeQ",
+            "label": "How much time did you usually spend on one of those days doing vigorous physical activities as part of your work?",
+            "type":"time",
+            "value":"00:00"
+           
           }
     ]
 }
