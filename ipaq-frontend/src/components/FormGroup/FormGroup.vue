@@ -3,6 +3,7 @@
         <FormulateForm
             v-model="currentAnswers"
             :schema="questionsSchema"
+            :error-behaviour="live"
         />
         {{currentAnswers}}
     </div>

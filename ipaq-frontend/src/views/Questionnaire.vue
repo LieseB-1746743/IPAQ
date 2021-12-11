@@ -3,24 +3,28 @@
   <b-row>
     <FormGroup :questionsSchema="currentQuestionsSchema" />
   </b-row>
-
+     
+    
   <b-row align-v="end" align-h="end">
     <b-col sm="auto" align-self="end">
       <b-button id="next-btn" variant="outline-primary" size="lg" >Next</b-button>
     </b-col>
+   
   </b-row>
-
+ <Chatbot/>
 </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import FormGroup from "@/components/FormGroup/FormGroup.vue";
+import Chatbot from "@/components/Chatbot.vue";
 
 
 @Component({
   components: {
     FormGroup,
+    Chatbot
   },
 })
 export default class Questionnaire extends Vue {
@@ -51,7 +55,7 @@ export default class Questionnaire extends Vue {
           },
           {
             "name":"jobQ",
-            "label": "Do you currently have a job or do any unpaid work outside your home?",
+            "label": "<p v-html='title'></p> Do you currently have a job or do any unpaid work outside your home?",
             "type": "radio",
             "options":{"yes":"YES","no":"NO"},
             "validation": "required"
@@ -83,6 +87,8 @@ export default class Questionnaire extends Vue {
           }
     ]
 }
+
+
 </script>
 
 <style scoped>

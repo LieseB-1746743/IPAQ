@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
 import Questionnaire from '../views/Questionnaire.vue'
+import CHAT from '../components/Chatbot.vue'
 
 Vue.use(VueRouter);
 
