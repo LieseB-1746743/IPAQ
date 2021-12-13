@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "nodemon": "nodemon --exec node index.js",
     "start": "node index.js"
   },
   "author": "Jonas Leuckx, Liese Bekkers",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15",
+    "http-errors": "~1.6.3"
+
   }
 }

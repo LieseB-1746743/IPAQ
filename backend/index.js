@@ -1,11 +1,17 @@
 const express = require('express')
-const app = express();
-const port = 8000;
+var app = express();
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-});
+const port = 8000;
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}!`)
 });
+
+var createError = require('http-errors');
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
+var indexRouter = require('./routes/index');
+app.use('/', indexRouter);
+var scoringRouter = require('./routes/scoring');
+app.use('/Scoring', scoringRouter);
