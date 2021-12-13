@@ -23,7 +23,8 @@ export default class Chatbot extends Vue {
     // Text tto speech activated
     // Speech to text via mic activated
     mounted (){
-      (function(d, m){
+      try {
+         (function(d, m){
         var kommunicateSettings = {"appId":"1b03d30d01a20936b285e65478a040d2","popupWidget":true,"automaticChatOpenOnNavigation":true};
         var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
          s.style.color="red";
@@ -31,8 +32,13 @@ export default class Chatbot extends Vue {
         console.log(s.getRootNode);
         s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
         var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
-        window.kommunicate = m; m._globals = kommunicateSettings;
-      })(document, window.kommunicate || {});
+        window["kommunicate"] = m; m._globals = kommunicateSettings;
+      })(document, window["kommunicate"] || {});
+    }
+      catch(err) {
+          // do nothing
+      }
+     
     }
 
 
