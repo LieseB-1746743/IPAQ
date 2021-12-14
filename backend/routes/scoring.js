@@ -13,6 +13,13 @@ router.get('/', async(req, res, next) => {
         return res.status(400).json({ "msg": "Bad Request , IPAQ Scoring parameters are invalid"});
     }
 
+    // Body consists of IPAQanswers
+    Output = scoringUtils.calculateShortIPAQscores(req.body);
+    console.log("ShortIPAQScoresOutput")
+    console.log(Output);
+    ActivityCategoricalScore = scoringUtils.getCategoricalScoreShortIPAQ(Output);
+    console.log("ShortIPAQCategoricalScore")
+    console.log(ActivityCategoricalScore);
    
 
     //data.vars
