@@ -14,16 +14,12 @@ router.get('/', async(req, res, next) => {
     }
 
     // Body consists of IPAQanswers
-    Output = scoringUtils.calculateShortIPAQscores(req.body);
-    console.log("ShortIPAQScoresOutput")
-    console.log(Output);
-    ActivityCategoricalScore = scoringUtils.getCategoricalScoreShortIPAQ(Output);
-    console.log("ShortIPAQCategoricalScore")
-    console.log(ActivityCategoricalScore);
-   
+    const SubmissionResult = scoringUtils.handleNewSubmission(req.body);
+    
+    console.log(SubmissionResult);
 
     //data.vars
-    return res.send("SCORING");	
+    return res.send(SubmissionResult);	
 });
 
 

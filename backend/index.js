@@ -14,4 +14,4 @@ app.use(bodyParser.json());
 var indexRouter = require('./routes/index');
 app.use('/', indexRouter);
 var scoringRouter = require('./routes/scoring');
-app.use('/Scoring', scoringRouter);
+app.use('/scoring', scoringRouter);

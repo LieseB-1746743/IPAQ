@@ -1,34 +1,20 @@
 const { json } = require('express');
 var activityEnum = require('../utils/activityENUM');
+var ShortSubmission =  require('../utils/ShortSubmission');
 
 // Official scoring = https://docs.google.com/a/student.uhasselt.be/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnx0aGVpcGFxfGd4OjE0NDgxMDk3NDU1YWRlZTM
 //---------------------------------------------------------------------------------------------------------------
 // MAYBE => Create Class IPAQsubmission{} => To handle form submission and easily connect them to a Person class
 
 
-/* FOR SHORT IPAQ
- All continuous scores are expressed in MET-minutes/week as defined below:
 
-- Walking MET-minutes/week = 3.3 * walking minutes * walking days
-- Moderate MET-minutes/week = 4.0 * moderate-intensity activity minutes * moderate days
-- Vigorous MET-minutes/week = 8.0 * vigorous-intensity activity minutes * vigorous-intensity days
 
-- Total physical activity MET-minutes/week = sum of Walking + Moderate + Vigorous MET-minutes/week scores.
-*/
+function handleNewSubmission(submissionBody){
 
-// Returns LOW, MODERATE or HIGH
-function getCategoricalScoreShortIPAQ(daysOfVigorousActivity, daysOfVigorousActivity20min, daysOfModerateActivity,daysWalking, daysWalking30min, totalPhysicalActivityMETminWeek){
+    let sub = new ShortSubmission(submissionBody);
 
-    if(daysOfVigorousActivity20min>=3 || daysOfModerateActivity >=5 || daysWalking30min >=5 || (daysOfVigorousActivity20min+daysOfModerateActivity+daysWalking30min >=5 && totalPhysicalActivityMETminWeek >=600 )){
-        return 'MODERATE'
-    }
-    else if((daysOfVigorousActivity >= 3 && totalPhysicalActivityMETminWeek >= 1500)|| (daysWalking + daysOfModerateActivity+daysOfVigorousActivity >=7 && totalPhysicalActivityMETminWeek >= 3000)){
-        return 'HIGH'
-    }else{
-        return 'LOW'
-    }
+    return sub.createSubmissionOutput();
 
-return 
 }
 
 // Section 5.3
@@ -36,6 +22,8 @@ return
 // #TODO: DETERMINE json format of answers
 /* ONE ANSWER ? */
 /*
+
+
 {
     "Activity":"Walking",
     "Days":"5",
@@ -50,7 +38,8 @@ function calculateShortIPAQscores(IPAQanswers){
 
 
 
-    return daysOfVigorousActivity, daysOfVigorousActivity20min, daysOfModerateActivity,daysWalking, daysWalking30min, totalPhysicalActivityMETminWeek
+    return 1
+    //return daysOfVigorousActivity, daysOfVigorousActivity20min, daysOfModerateActivity,daysWalking, daysWalking30min, totalPhysicalActivityMETminWeek
 }
 
 
@@ -126,4 +115,4 @@ the levels of physical activity associated with health benefits for measures suc
 IPAQ, which report on a broad range of domains of physical activity.*/
 
 
-module.exports = {calculateLongIPAQscores, calculateShortIPAQscores,getCategoricalScoreShortIPAQ}
+module.exports = {calculateLongIPAQscores, calculateShortIPAQscores,handleNewSubmission}
