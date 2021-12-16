@@ -7,7 +7,7 @@
     
   <b-row align-v="end" align-h="end">
     <b-col sm="auto" align-self="end">
-      <b-button id="next-btn" variant="outline-primary" size="lg" >Next</b-button>
+      <b-button id="next-btn" variant="outline-primary" size="lg" v-on:click="NextBtnClicked" >Next</b-button>
     </b-col>
    
   </b-row>
@@ -21,14 +21,22 @@ import FormGroup from "@/components/FormGroup/FormGroup.vue";
 import Chatbot from "@/components/Chatbot.vue";
 
 
+
 @Component({
   components: {
     FormGroup,
     Chatbot
   },
 })
+
 export default class Questionnaire extends Vue {
 
+   NextBtnClicked(){
+      console.log("CLICK nxt Btn");
+      
+
+      
+}
     //TODO: activate validation when clicking NEXT
     // Temp here
     
@@ -55,7 +63,7 @@ export default class Questionnaire extends Vue {
           },
           {
             "name":"jobQ",
-            "label": "<p v-html='title'></p> Do you currently have a job or do any unpaid work outside your home?",
+            "label": "Do you currently have a job or do any unpaid work outside your home?",
             "type": "radio",
             "options":{"yes":"YES","no":"NO"},
             "validation": "required"
