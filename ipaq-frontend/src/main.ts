@@ -7,23 +7,24 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-
+Vue.use(BootstrapVue)
 
 // Import Vue form generator
 import VueFormGenerator from "vue-form-generator";
 import "vue-form-generator/dist/vfg.css";  // optional full css additions
+Vue.use(VueFormGenerator);
+Vue.use(IconsPlugin);
 
+// Import Vue bootstrap datetimepicker
 import datePicker from 'vue-bootstrap-datetimepicker';
 import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
-
 Vue.use(datePicker);
 
-Vue.use(VueFormGenerator);
+import "vue-multiselect/dist/vue-multiselect.min.css";
+import Multiselect from 'vue-multiselect';
+Vue.component('multiselect', Multiselect);
 
-// Make BootstrapVue available throughout your project
-Vue.use(BootstrapVue)
-// Optionally install the BootstrapVue icon components plugin
-Vue.use(IconsPlugin)
+import "bootstrap-select/dist/css/bootstrap-select.min.css";
 
 
 Vue.config.productionTip = false;
