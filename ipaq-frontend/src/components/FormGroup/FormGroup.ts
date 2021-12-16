@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
-import JQuery from 'jquery';
 
 @Component
 export default class FormGroup extends Vue {
@@ -8,14 +7,9 @@ export default class FormGroup extends Vue {
     //@Prop({required: true}) readonly questionsSchema: any[];
 
     // DATA -------------------------------------------------------------------------------------------
-    private model: any = {
-        "vigorousDays":0 ,
+    model: any = {
+        "vigorousDays": 1,
     }
-
-    get filteredSchemas() {
-            return this.schemas.filter(schema => schema.showif);
-    }
-
 
     private schemas: any = [
         {
@@ -43,26 +37,32 @@ export default class FormGroup extends Vue {
                 }
                 ]
           }, 
-          showif: true
+          showif: function(){
+            return true;
+          }
         },
 
 
         {
             id: 2,
             schema: {
-            fields: [
-              {
-                  type: "dateTimePicker",
-                  label: 'How much time did you usually spend doing <b>vigorous</b> physical activities on one of those days?',
-                  model: 'vigorousTime',
-                  format: "YYYY-MM-DD HH:mm:ss",
-                  dateTimePickerOptions: {
-                      format: "YYYY-MM-DD HH:mm:ss"
-                  }
-              }
-            ]
-        },
-        showif: false},
+                fields: [
+                {
+                    type: "dateTimePicker",
+                    label: 'How much time did you usually spend doing <b>vigorous</b> physical activities on one of those days?',
+                    model: 'vigorousTime',
+                    format: "YYYY-MM-DD HH:mm:ss",
+                    dateTimePickerOptions: {
+                        format: "YYYY-MM-DD HH:mm:ss"
+                    }
+                }
+                ]
+            },
+            showif: function(model){
+                console.log(model);
+                return model.vigorousDays != 0;
+            }
+        }
     ];
 
 
