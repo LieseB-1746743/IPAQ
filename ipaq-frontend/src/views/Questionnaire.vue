@@ -1,7 +1,8 @@
 <template>
 <div>
-  <FormGroup v-for="page in pages" :key="page.pageID" :schemas="page.schemas" :model="page.model" />
+  <!---<FormGroup v-for="page in pages" :key="page.pageID" :schemas="page.schemas" :model="page.model" />-->
 
+   <FormGroup  :schemas="currentPage.schemas" :model="currentPage.model" />
 
   <!--<b-row>
     <FormGroup :schemas="schemas" :model="model" />
@@ -34,12 +35,22 @@ import pages from "../utils/IPAQ_English_self-admin_short";
 export default class Questionnaire extends Vue {
   // Data ----------------------------------------------------------
   private pages = pages;
+  private currentPage = pages[0]
+  private currentpageIndex = 0;
 
   // Computed properties -------------------------------------------
 
   // Methods -------------------------------------------------------
   NextBtnClicked(){
     console.log("CLICK nxt Btn");
+    
+    if(this.currentpageIndex< Object.keys(pages).length-1){
+         this.currentpageIndex+=1;
+    }
+ 
+    this.currentPage=pages[this.currentpageIndex];
+    console.log("CurrentIndex");
+    console.log(this.currentpageIndex);
   }
 }
 </script>

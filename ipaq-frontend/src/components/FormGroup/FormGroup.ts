@@ -7,12 +7,14 @@ export default class FormGroup extends Vue {
     // PROPS ------------------------------------------------------------------------------------------
     @Prop({required: true}) readonly schemas: any[];
     @Prop({required: true}) model: any;
+    
 
     // DATA -------------------------------------------------------------------------------------------
     private formOptions: any = {
         validateAfterLoad: true,
         validateAfterChanged: true
     }
+    
     
     // COMPUTED PROPERTIES ----------------------------------------------------------------------------
     get filteredSchemas() {
