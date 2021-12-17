@@ -2,7 +2,7 @@
 <div>
   <!---<FormGroup v-for="page in pages" :key="page.pageID" :schemas="page.schemas" :model="page.model" />-->
 
-   <FormGroup  :schemas="currentPage.schemas" :model="currentPage.model" />
+   <FormGroup  :schemas="currentPage.schemas" :model="pages[0].model" />
 
   <!--<b-row>
     <FormGroup :schemas="schemas" :model="model" />
