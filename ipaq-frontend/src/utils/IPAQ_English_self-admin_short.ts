@@ -114,4 +114,29 @@ const pages: any = [
     }
 ];
 
-export default pages;
+const parts:any = [
+    {  
+        "partID":1,
+        "ipaqPartTitle":"Vigorous activities",
+        "ipaqPartAnnotation": "Think about all the vigorous activities that you did in the last 7 days. Vigorous physical activities refer to activities that take hard physical effort and make you breathe much harder than normal. Think only about those physical activities that you did for at least 10 minutes at a time."
+    },
+    {  
+        "partID":2,
+        "ipaqPartTitle":"Moderate activities",
+        "ipaqPartAnnotation": "Think about all the moderate activities that you did in the last 7 days. Moderate activities refer to activities that take moderate physical effort and make you breathe somewhat harder than normal. Think only about those physical activities that you did for at least 10 minutes at a time."
+   }
+   ,
+    {  
+        "partID":3,
+        "ipaqPartTitle":"Walking",
+        "ipaqPartAnnotation": "Think about the time you spent walking in the last 7 days. This includes at work and at home, walking to travel from place to place, and any other walking that you have done solely for recreation, sport, exercise, or leisure."
+   }
+   ,
+    {  
+        "partID":4,
+        "ipaqPartTitle":"Sitting",
+        "ipaqPartAnnotation": "The last question is about the time you spent sitting on weekdays during the last 7 days. Include time spent at work, at home, while doing course work and during leisure time. This may include time spent sitting at a desk, visiting friends, reading, or sitting or lying down to watch television."
+   }
+];
+
+export default {pages,parts};

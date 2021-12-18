@@ -3,7 +3,7 @@ import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
 import Questionnaire from '../views/Questionnaire.vue'
 import QuestionnaireResult from '../views/QuestionnaireResult.vue'
-import CHAT from '../components/Chatbot.vue'
+
 
 Vue.use(VueRouter);
 

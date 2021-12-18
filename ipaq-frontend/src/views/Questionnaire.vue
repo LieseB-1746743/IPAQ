@@ -2,7 +2,7 @@
 <div>
   <!---<FormGroup v-for="page in pages" :key="page.pageID" :schemas="page.schemas" :model="page.model" />-->
  <div v-if="!submit" >
-    <FormGroup  :schemas="currentPage.schemas" :model="pages[0].model" />
+    <FormGroup  :schemas="currentPage.schemas" :model="pages[0].model" :part="currentPart"/>
   </div>
   <div v-if="submit" >
     <h1> ANSWER OVERVIEW </h1>
@@ -26,7 +26,7 @@ import { Component, Vue } from "vue-property-decorator";
 import FormGroup from "../components/FormGroup/FormGroup.vue";
 import AnswerOverview from "../components/AnswerOverview/AnswerOverview.vue";
 import Chatbot from "../components/Chatbot.vue";
-import pages from "../utils/IPAQ_English_self-admin_short";
+import IPAQ_short from "../utils/IPAQ_English_self-admin_short";
 import router from '../router';
 
 @Component({
@@ -39,8 +39,10 @@ import router from '../router';
 
 export default class Questionnaire extends Vue {
   // Data ----------------------------------------------------------
-  private pages = pages;
-  private currentPage = pages[0]
+  private pages = IPAQ_short.pages;
+  private parts = IPAQ_short.parts;
+  private currentPage = IPAQ_short.pages[0];
+  private currentPart =  IPAQ_short.parts[0];
   private currentpageIndex = 0;
   private submit = false;
 
@@ -50,15 +52,16 @@ export default class Questionnaire extends Vue {
   NextBtnClicked(){
     console.log("CLICK nxt Btn");
     
-    if(this.currentpageIndex< Object.keys(pages).length){
+    if(this.currentpageIndex< Object.keys(this.pages).length){
          this.currentpageIndex+=1;
 
-         if(this.currentpageIndex>=Object.keys(pages).length){
+         if(this.currentpageIndex>=Object.keys(this.pages).length){
             this.submit = true;
          }
     }
 
-    this.currentPage=pages[this.currentpageIndex];
+    this.currentPage=this.pages[this.currentpageIndex];
+    this.currentPart=this.parts[this.currentpageIndex];
     console.log("CurrentIndex");
     console.log(this.currentpageIndex);
   }
