@@ -5,7 +5,7 @@ import Questionnaire from '../views/Questionnaire.vue'
 import QuestionnaireResult from '../views/QuestionnaireResult.vue'
 import FAQ from  '../views/FAQ.vue'
 
-
+let result:any;
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -21,7 +21,10 @@ const routes: Array<RouteConfig> = [
   },
   {
     path: "/Qresult",
-    name: "IPAQ Result",
+    name: "IPAQ Result", 
+    props: route => {
+      return route.params //  '[object Object]'
+   },
     component: QuestionnaireResult,
   },
   {

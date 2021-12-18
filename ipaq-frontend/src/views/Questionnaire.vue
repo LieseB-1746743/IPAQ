@@ -67,8 +67,7 @@ export default class Questionnaire extends Vue {
   }
 
   SubmitBtnClicked(){
-    this.$router.push('/Qresult');
-    
+    this.$router.push({name:'IPAQ Result', params: {answers:this.pages[0].model}});
 
   }
 
