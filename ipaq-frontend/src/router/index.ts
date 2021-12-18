@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
 import Questionnaire from '../views/Questionnaire.vue'
+import QuestionnaireResult from '../views/QuestionnaireResult.vue'
 import CHAT from '../components/Chatbot.vue'
 
 Vue.use(VueRouter);
@@ -16,6 +17,11 @@ const routes: Array<RouteConfig> = [
     path: "/Q",
     name: "IPAQ Questionaire",
     component: Questionnaire,
+  },
+  {
+    path: "/Qresult",
+    name: "IPAQ Result",
+    component: QuestionnaireResult,
   },
   {
     path: "/about",
