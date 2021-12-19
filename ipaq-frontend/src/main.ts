@@ -28,7 +28,6 @@ Vue.component('multiselect', Multiselect);
 
 import "bootstrap-select/dist/css/bootstrap-select.min.css";
 
-
 Vue.config.productionTip = false;
 
 import * as $ from 'jquery';

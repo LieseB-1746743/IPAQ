@@ -27,38 +27,37 @@ export default class Questionnaire extends Vue {
   private answers:any;
   private results:any;
 
-   private answersbody:any = {
-    "name":"Kris Luyten",
-    "age":42,
-    "sex":"M",
-    "answers": [
-        {
-            "activity": 0,
-            "daysPerWeek":2,
-            "hoursPerDay":5,
-            "minutesPerDay":50
-        },
-        {
-            "activity": 1,
-            "daysPerWeek":2,
-            "hoursPerDay":5,
-            "minutesPerDay":50
-        },
-        {
-            "activity": 2,
-            "daysPerWeek":2,
-            "hoursPerDay":5,
-            "minutesPerDay":50
-        },
+   private data = JSON.stringify({
+  "name": "Kris Luyten",
+  "age": 42,
+  "sex": "M",
+  "answers": [
+    {
+      "activity": 0,
+      "daysPerWeek": 2,
+      "hoursPerDay": 5,
+      "minutesPerDay": 50
+    },
+    {
+      "activity": 1,
+      "daysPerWeek": 2,
+      "hoursPerDay": 5,
+      "minutesPerDay": 50
+    },
+    {
+      "activity": 2,
+      "daysPerWeek": 2,
+      "hoursPerDay": 5,
+      "minutesPerDay": 50
+    },
+    {
+      "activity": 3,
+      "hoursPerDay": 5,
+      "minutesPerDay": 50
+    }
+  ]
+});
 
-        {
-            "activity":3,
-            "hoursPerDay":5,
-            "minutesPerDay":50
-        
-        }
-    ]
-}
 
   // Methods -------------------------------------------------------
 
@@ -79,6 +78,8 @@ export default class Questionnaire extends Vue {
   
     // Send IPAQ results to backend
     // get IPAQ scores from backend
+    
+    console.log( JSON.parse(this.data));
     this.results=this.getIPAQscores();
 
   }
@@ -88,13 +89,15 @@ export default class Questionnaire extends Vue {
         method: 'GET',
         url: `http://localhost:8000/scoring`,
         headers: { 
-          'Content-type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'accept':'*/*'
         },
-        data: {body:this.answersbody}
+        data:this.data
       }).then((response) => { 
-        
-        this.results = response;
+        console.log("reponse");
+        console.log(JSON.parse(JSON.stringify(response.data)));
+        this.results = JSON.parse(JSON.stringify(response.data));
       }).catch((error) => {
         console.log("error");
       });

@@ -6,7 +6,8 @@ var utils = require('../utils/utils');
 
 // Get IPAQ scoring
 router.get('/', async(req, res, next) => {
-
+    console.log("INNNNN");
+    console.log(req.body);
 
     if (!await utils.checkIPAQResult(req.body)) {
         
