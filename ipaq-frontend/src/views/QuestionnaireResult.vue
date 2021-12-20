@@ -81,21 +81,22 @@ export default class Questionnaire extends Vue {
     // get IPAQ scores from backend
     
     console.log( JSON.parse(this.data));
-   // this.results=this.getIPAQscores();
+    // DO IPAQscores request on mount
+     await this.getIPAQscores();
 
   }
 
-  TestBtnCLicked(){
- this.results=this.getIPAQscores();
+ async TestBtnCLicked(){
+ await this.getIPAQscores();
   }
   
    async getIPAQscores() {
       await axios({
-        method: 'GET',
+        method: 'post',
         url: `http://localhost:8000/scoring`,
         headers: { 
           'Access-Control-Allow-Origin': '*',
-           'Content-Type': 'application/json',
+          'Content-Type': 'application/json',
           'accept':'*/*'
         },
         data:this.data

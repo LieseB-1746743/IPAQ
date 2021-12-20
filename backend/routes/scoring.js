@@ -4,8 +4,8 @@ var scoringUtils = require('../utils/scoringUtils');
 var utils = require('../utils/utils');
 
 
-// Get IPAQ scoring
-router.get('/', async(req, res, next) => {
+// POST IPAQ scoring
+router.post('/', async(req, res, next) => {
     console.log("IN IPAQ scoring endpoint");
     console.log(req.body);
 
