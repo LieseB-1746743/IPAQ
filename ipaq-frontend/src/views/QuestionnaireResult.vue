@@ -4,6 +4,7 @@
  {{answers}}
  <h1> IPAQ RESULTS </h1>
  {{results}}
+  <b-button id="submit-btn" variant="outline-primary" size="lg" v-on:click="TestBtnCLicked" >TEST</b-button>
  <Chatbot/>
 </div>
 </template>
@@ -80,8 +81,12 @@ export default class Questionnaire extends Vue {
     // get IPAQ scores from backend
     
     console.log( JSON.parse(this.data));
-    this.results=this.getIPAQscores();
+   // this.results=this.getIPAQscores();
 
+  }
+
+  TestBtnCLicked(){
+ this.results=this.getIPAQscores();
   }
   
    async getIPAQscores() {
@@ -90,7 +95,7 @@ export default class Questionnaire extends Vue {
         url: `http://localhost:8000/scoring`,
         headers: { 
           'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json',
+           'Content-Type': 'application/json',
           'accept':'*/*'
         },
         data:this.data
