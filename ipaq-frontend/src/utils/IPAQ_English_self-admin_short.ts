@@ -1,7 +1,7 @@
 const pages: any = [
     {
       "pageID": 1,
-      "model": { "vigorousDays": 0 },
+      "model": { "vigorousDays": 0, "moderateDays": 0, "walkingDays": 0},
       "schemas": [
         {
             id: 1,
@@ -36,27 +36,65 @@ const pages: any = [
         {
             id: 2,
             schema: {
+                
                 fields: [
-                {
-                    type: "input",
-                    inputType:"number",
-                    label: 'How much time did you usually spend doing <b>vigorous</b> physical activities on one of those days?',
-                    model: 'vigorousTime',
-                   
-                }
+                    {                                            
+                        label: 'How much time did you usually spend doing <b>vigorous</b> physical activities on one of those days?',
+                                                                    
+                    },
+                    
+                ],
+
+                groups: [{
+                    legend: "",
+                    styleClasses: "col-md-10",
+                    fields: [{
+                                type: "input",
+                                inputType:"number",                    
+                                label: 'Hours per days',
+                                model: 'vigorousTimeHours',
+                                styleClasses: "col-md-3",
+                                hint: "0-16",
+                                max:16,
+                                min:0,
+                                value:0,
+                                placeholder:"0",
+                                validator:['number', 'integer']
+                        },
+                        {
+                            type: "input",
+                            inputType:"number",
+                            label: 'Minutes per day',
+                            model: 'vigorousTimeMinutes',
+                            styleClasses: "col-md-3",
+                            hint: "0-60",
+                            max:60,
+                            min:0,
+                            value:0,
+                            placeholder:"0",
+                            validator:['number', 'integer']
+                        }
+                    ]
+                },
                 ]
-            },
+
+        },
+        
+        formOptions: {
+            validateAfterLoad: true,
+            validateAfterChanged: true
+        },
             showif: function(model){
                 console.log(model);
                 return model.vigorousDays != 0;
             }
         }
-      ]
+      ],
     },
     {
       
       "pageID": 2,
-      "model": { "moderateDays": 0 },
+      "model": {},
       "schemas": [
         {
             id: 1,
@@ -87,29 +125,198 @@ const pages: any = [
             return true;
           }
         },
-
         {
             id: 2,
             schema: {
+                
                 fields: [
-                {
-                    type: "dateTimePicker",
-                    label: 'How much time did you usually spend doing <b>moderate</b> physical activities on one of those days?',
-                    model: 'vigorousTime',
-                    format: "YYYY-MM-DD HH:mm:ss",
-                    dateTimePickerOptions: {
-                        format: "YYYY-MM-DD HH:mm:ss"
-                    }
-                }
+                    {                                            
+                        label: 'How much time did you usually spend doing <b>moderate</b> physical activities on one of those days?',
+                                                                    
+                    },
+                    
+                ],
+
+                groups: [{
+                    legend: "",
+                    styleClasses: "col-md-10",
+                    fields: [{
+                                type: "input",
+                                inputType:"number",                    
+                                label: 'Hours per days',
+                                model: 'moderateTimeHours',
+                                styleClasses: "col-md-3",
+                                hint: "0-16",
+                                max:16,
+                                min:0,
+                                value:0,
+                                placeholder:"0",
+                                validator:['number', 'integer']
+                        },
+                        {
+                            type: "input",
+                            inputType:"number",
+                            label: 'Minutes per day',
+                            model: 'moderateTimeMinutes',
+                            styleClasses: "col-md-3",
+                            hint: "0-60",
+                            max:60,
+                            min:0,
+                            value:0,
+                            placeholder:"0",
+                            validator:['number', 'integer']
+                        }
+                    ]
+                },
                 ]
-            },
+        },
             showif: function(model){
                 console.log(model);
                 return model.moderateDays != 0;
             }
         }
       ]
-    }
+    },
+    {
+      
+        "pageID": 3,
+        "model": {},
+        "schemas": [
+          {
+              id: 1,
+              schema: {
+                  fields: [
+                  {
+                      type: 'select',
+                      label: 'During the <b>last 7 days</b>, on how many days did you do <b>walk</b> for at least 10 minutes at a time?',
+                      model: 'walkingDays',
+                      values: function() {
+                          return [
+                              {id:0, name:'No walking activities'},
+                              {id:1, name:'1 day'},
+                              {id:2, name:'2 days'},
+                              {id:3, name: '3 days'},
+                              {id:4, name: '4 days'},
+                              {id:5, name: '5 days'},
+                              {id:6, name: '6 days'},
+                              {id:7, name: '7 days'}
+  
+                          ]
+                      },               
+                      required: true,
+                  }
+                  ]
+            }, 
+            showif: function(){
+              return true;
+            }
+          },
+          {
+              id: 2,
+              schema: {
+                  
+                  fields: [
+                      {                                            
+                          label: 'How much time did you usually spend <b>walking</b> on one of those days?',
+                                                                      
+                      },
+                      
+                  ],
+  
+                  groups: [{
+                      legend: "",
+                      styleClasses: "col-md-10",
+                      fields: [{
+                                  type: "input",
+                                  inputType:"number",                    
+                                  label: 'Hours per days',
+                                  model: 'walkingTimeHours',
+                                  styleClasses: "col-md-3",
+                                  hint: "0-16",
+                                  max:16,
+                                  min:0,
+                                  value:0,
+                                  placeholder:"0",
+                                  validator:['number', 'integer']
+                          },
+                          {
+                              type: "input",
+                              inputType:"number",
+                              label: 'Minutes per day',
+                              model: 'walkingTimeMinutes',
+                              styleClasses: "col-md-3",
+                              hint: "0-60",
+                              max:60,
+                              min:0,
+                              value:0,
+                              placeholder:"0",
+                              validator:['number', 'integer']
+                          }
+                      ]
+                  },
+                  ]
+          },
+              showif: function(model){
+                  console.log(model);
+                  return model.walkingDays != 0;
+              }
+          }
+        ]
+      },
+      {
+      
+        "pageID": 4,
+        "model": {},
+        "schemas": [
+          {
+              id: 1,
+              schema: {
+                fields: [
+                    {                                            
+                        label: 'During the <b>last 7 days</b>, how much time did you spend <b>sitting</b> on a <b>week day</b>?',
+                                                                    
+                    },
+                    
+                ],
+                groups: [{
+                    legend: "",
+                    styleClasses: "col-md-10",
+                    fields: [{
+                                type: "input",
+                                inputType:"number",                    
+                                label: 'Hours per days',
+                                model: 'sittingTimeHours',
+                                styleClasses: "col-md-3",
+                                hint: "0-16",
+                                max:16,
+                                min:0,
+                                value:0,
+                                placeholder:"0",
+                                validator:['number', 'integer']
+                        },
+                        {
+                            type: "input",
+                            inputType:"number",
+                            label: 'Minutes per day',
+                            model: 'sittingTimeMinutes',
+                            styleClasses: "col-md-3",
+                            hint: "0-60",
+                            max:60,
+                            min:0,
+                            value:0,
+                            placeholder:"0",
+                            validator:['number', 'integer']
+                        }
+                    ]
+                },
+                ]
+            }, 
+            showif: function(){
+              return true;
+            }
+          },
+        ]
+      }
 ];
 
 const parts:any = [

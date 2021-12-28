@@ -8,7 +8,8 @@
             :key="item.id"
             :schema="item.schema"
             :model="model"
-            :options="formOptions">
+            :options="formOptions"
+            @validated="validatedfunct">
         </vue-form-generator>
     </div>
 </template>

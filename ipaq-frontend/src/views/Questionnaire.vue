@@ -2,7 +2,7 @@
 <div>
   <!---<FormGroup v-for="page in pages" :key="page.pageID" :schemas="page.schemas" :model="page.model" />-->
  <div v-if="!submit" >
-    <FormGroup  :schemas="currentPage.schemas" :model="pages[0].model" :part="currentPart"/>
+    <FormGroup  :schemas="currentPage.schemas" :model="pages[0].model" :part="currentPart" :validatedfunct="onValidated"/>
   </div>
   <div v-if="submit" >
     <h1> ANSWER OVERVIEW </h1>
@@ -45,12 +45,25 @@ export default class Questionnaire extends Vue {
   private currentPart =  IPAQ_short.parts[0];
   private currentpageIndex = 0;
   private submit = false;
+  private pageIsValidated = true;
 
   // Computed properties -------------------------------------------
 
   // Methods -------------------------------------------------------
+
+  // is called whenever the form does validation
+  onValidated(isValid, errors) {
+   console.log("Validation result: ", isValid, ", Errors:", errors);
+   this.pageIsValidated = isValid;
+  }
   NextBtnClicked(){
     console.log("CLICK nxt Btn");
+
+    // Only proceed when form is valid
+    if(!this.pageIsValidated){
+      alert("Form is not valid! Please correct the invalid answers.");
+      return;
+    }
     
     if(this.currentpageIndex< Object.keys(this.pages).length){
          this.currentpageIndex+=1;
@@ -84,4 +97,14 @@ export default class Questionnaire extends Vue {
   #change-btn {
       margin-right: 2rem;
   }
+
+  /* to create space between HOURS and MINUTES INPUT => does not work */
+  #hours-per-days{
+    padding-right: 5rem;
+    color: red;
+    background-color: red;
+  }
+  
+  
+  		
 </style>

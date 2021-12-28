@@ -8,6 +8,7 @@ export default class FormGroup extends Vue {
     @Prop({required: true}) readonly schemas: any[];
     @Prop({required: true}) model: any;
     @Prop({required: true}) part: any;
+    @Prop({required:true}) validatedfunct:any;
     
 
     // DATA -------------------------------------------------------------------------------------------
