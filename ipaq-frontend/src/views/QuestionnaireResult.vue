@@ -1,10 +1,9 @@
 <template>
 <div>
  <h1> IPAQ ANSWERS </h1>
- {{answers}}
+ {{answersModel}}
  <h1> IPAQ RESULTS </h1>
  {{results}}
-  <b-button id="submit-btn" variant="outline-primary" size="lg" v-on:click="TestBtnCLicked" >TEST</b-button>
  <Chatbot/>
 </div>
 </template>
@@ -25,49 +24,51 @@ axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 export default class Questionnaire extends Vue {
   // Data ----------------------------------------------------------
-  private answers:any;
-  private results:any;
-
-   private data = JSON.stringify({
-  "name": "Kris Luyten",
-  "age": 42,
-  "sex": "M",
-  "answers": [
-    {
-      "activity": 0,
-      "daysPerWeek": 2,
-      "hoursPerDay": 5,
-      "minutesPerDay": 50
-    },
-    {
-      "activity": 1,
-      "daysPerWeek": 2,
-      "hoursPerDay": 5,
-      "minutesPerDay": 50
-    },
-    {
-      "activity": 2,
-      "daysPerWeek": 2,
-      "hoursPerDay": 5,
-      "minutesPerDay": 50
-    },
-    {
-      "activity": 3,
-      "hoursPerDay": 5,
-      "minutesPerDay": 50
-    }
-  ]
-});
-
+  private answersModel:any;
+  private answersBody:any;
+  private results:any = {};
 
   // Methods -------------------------------------------------------
 
-  handleAnswersToRightBackendScoringFormat(answers){
+  handleAnswersToRightBackendScoringFormat(answersInModel){
+    let answ = answersInModel.answers;
 
-    return answers;
+      let answerBody = JSON.stringify({
+      "name": "Kris Luyten", // TODO
+      "age": 42,              //TODO
+      "sex": "M",             // TODO
+      "answers": [
+        {
+          "activity": 0,
+          "daysPerWeek": answ.vigorousDays,
+          "hoursPerDay": answ.vigorousTimeHours,
+          "minutesPerDay": answ.vigorousTimeMinutes
+        },
+        {
+          "activity": 1,
+          "daysPerWeek": answ.moderateDays,
+          "hoursPerDay": answ.moderateTimeHours,
+          "minutesPerDay": answ.moderateTimeMinutes
+        },
+        {
+          "activity": 2,
+          "daysPerWeek": answ.walkingDays,
+          "hoursPerDay": answ.walkingTimeHours,
+          "minutesPerDay": answ.walkingTimeMinutes
+        },
+        {
+          "activity": 3,
+          "hoursPerDay": answ.sittingTimeHours,
+          "minutesPerDay": answ.sittingTimeMinutes
+        }
+      ]
+    });
+
+    return answerBody;
   }
     created(){
-     this.answers = this.getParams()
+      this.answersModel = this.getParams()
+      this.answersBody =  this.handleAnswersToRightBackendScoringFormat(this.answersModel);
   }
 
   getParams () {
@@ -76,19 +77,13 @@ export default class Questionnaire extends Vue {
       }
 
   async mounted(){
-  
+    
     // Send IPAQ results to backend
     // get IPAQ scores from backend
-    
-    console.log( JSON.parse(this.data));
-    // DO IPAQscores request on mount
      await this.getIPAQscores();
 
   }
 
- async TestBtnCLicked(){
- await this.getIPAQscores();
-  }
   
    async getIPAQscores() {
       await axios({
@@ -99,7 +94,7 @@ export default class Questionnaire extends Vue {
           'Content-Type': 'application/json',
           'accept':'*/*'
         },
-        data:this.data
+        data:this.answersBody
       }).then((response) => { 
         console.log("reponse");
         console.log(JSON.parse(JSON.stringify(response.data)));

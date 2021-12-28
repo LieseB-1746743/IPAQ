@@ -78,6 +78,7 @@ export default class Questionnaire extends Vue {
     console.log("CurrentIndex");
     console.log(this.currentpageIndex);
   }
+  
 
   SubmitBtnClicked(){
     this.$router.push({name:'IPAQ Result', params: {answers:this.pages[0].model}});
