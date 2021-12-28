@@ -38,13 +38,11 @@ const pages: any = [
             schema: {
                 fields: [
                 {
-                    type: "dateTimePicker",
+                    type: "input",
+                    inputType:"number",
                     label: 'How much time did you usually spend doing <b>vigorous</b> physical activities on one of those days?',
                     model: 'vigorousTime',
-                    format: "YYYY-MM-DD HH:mm:ss",
-                    dateTimePickerOptions: {
-                        format: "YYYY-MM-DD HH:mm:ss"
-                    }
+                   
                 }
                 ]
             },
