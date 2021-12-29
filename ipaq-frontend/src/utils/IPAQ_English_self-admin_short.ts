@@ -51,7 +51,7 @@ const pages: any = [
                     fields: [{
                                 type: "input",
                                 inputType:"number",                    
-                                label: 'Hours per day',
+                                label: 'Hours ',
                                 model: 'vigorousTimeHours',
                                 styleClasses: "col-md-3",
                                 hint: "0-16",
@@ -143,7 +143,7 @@ const pages: any = [
                     fields: [{
                                 type: "input",
                                 inputType:"number",                    
-                                label: 'Hours per day',
+                                label: 'Hours ',
                                 model: 'moderateTimeHours',
                                 styleClasses: "col-md-3",
                                 hint: "0-16",
@@ -229,7 +229,7 @@ const pages: any = [
                       fields: [{
                                   type: "input",
                                   inputType:"number",                    
-                                  label: 'Hours per day',
+                                  label: 'Hours ',
                                   model: 'walkingTimeHours',
                                   styleClasses: "col-md-3",
                                   hint: "0-16",
@@ -284,7 +284,7 @@ const pages: any = [
                     fields: [{
                                 type: "input",
                                 inputType:"number",                    
-                                label: 'Hours per day',
+                                label: 'Hours ',
                                 model: 'sittingTimeHours',
                                 styleClasses: "col-md-3",
                                 hint: "0-16",

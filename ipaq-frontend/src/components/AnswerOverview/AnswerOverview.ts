@@ -49,7 +49,6 @@ export default class AnswerOverview extends Vue {
                  
                     if(field.model != undefined){
                         this.formOverview.push(String(this.model[field.model])+ temp);
-                        // TODO: create form overview with answers under questions
                     }
 
                 };
