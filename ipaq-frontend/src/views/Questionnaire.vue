@@ -6,7 +6,7 @@
   </div>
   <div v-if="submit" >
     <h1> ANSWER OVERVIEW </h1>
-    <AnswerOverview  v-for="page in pages" :key="page.pageID" :schemas="page.schemas" :model="pages[0].model" />
+    <AnswerOverview  v-for="page in pages" :key="page.pageID" :schemas="page.schemas" :model="pages[0].model" :parts="parts" :partID="page.pageID" />
   </div>
    
   <b-row align-v="end" align-h="end">
