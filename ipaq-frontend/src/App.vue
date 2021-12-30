@@ -3,6 +3,7 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/Q">IPAQ</router-link> |
+       <router-link to="/Qlong">IPAQ Long</router-link> |
       <router-link to="/FAQ">FAQ</router-link> |
       <router-link to="/about">About</router-link> |
     </div>

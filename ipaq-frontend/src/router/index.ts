@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
 import Questionnaire from '../views/Questionnaire.vue'
+import QuestionnaireLong from '../views/QuestionnaireLong.vue'
 import QuestionnaireResult from '../views/QuestionnaireResult.vue'
 import FAQ from  '../views/FAQ.vue'
 
@@ -18,6 +19,11 @@ const routes: Array<RouteConfig> = [
     path: "/Q",
     name: "IPAQ Questionaire",
     component: Questionnaire,
+  },
+  {
+    path: "/Qlong",
+    name: "IPAQ Questionaire",
+    component: QuestionnaireLong,
   },
   {
     path: "/Qresult",
