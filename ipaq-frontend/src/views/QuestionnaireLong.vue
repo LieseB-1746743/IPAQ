@@ -26,7 +26,7 @@ import { Component, Vue } from "vue-property-decorator";
 import FormGroup from "../components/FormGroup/FormGroup.vue";
 import AnswerOverview from "../components/AnswerOverview/AnswerOverview.vue";
 import Chatbot from "../components/Chatbot.vue";
-import IPAQ_short from "../utils/IPAQ_English_self-admin_short";
+import IPAQ_Long from "../utils/IPAQ_English_self-admin_long";
 import router from '../router';
 
 @Component({
@@ -40,10 +40,10 @@ import router from '../router';
 
 export default class Questionnaire extends Vue {
   // Data ----------------------------------------------------------
-  private pages = IPAQ_short.pages;
-  private parts = IPAQ_short.parts;
-  private currentPage = IPAQ_short.pages[0];
-  private currentPart =  IPAQ_short.parts[0];
+  private pages = IPAQ_Long.pages;
+  private parts = IPAQ_Long.parts;
+  private currentPage = IPAQ_Long.pages[0];
+  private currentPart =  IPAQ_Long.parts[0];
   private currentpageIndex = 0;
   private submit = false;
   private pageIsValidated = true;
