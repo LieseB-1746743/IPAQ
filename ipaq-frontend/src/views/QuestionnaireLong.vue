@@ -2,7 +2,7 @@
 <div>
   <!---<FormGroup v-for="page in pages" :key="page.pageID" :schemas="page.schemas" :model="page.model" />-->
  <div v-if="!submit" >
-    <FormGroup  :schemas="currentPage.schemas" :model="pages[0].model" :part="currentPart" :validatedfunct="onValidated"/>
+    <FormGroup  :schemas="currentPage.schemas" :model="pages[0].model" :part="currentPart" :validatedfunct="onValidated" imageSource=""/>
   </div>
   <div v-if="submit" >
     <h1> ANSWER OVERVIEW </h1>

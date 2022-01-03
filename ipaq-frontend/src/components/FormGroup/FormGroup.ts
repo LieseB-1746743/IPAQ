@@ -9,7 +9,12 @@ export default class FormGroup extends Vue {
     @Prop({required: true}) model: any;
     @Prop({required: true}) part: any;
     @Prop({required:true}) validatedfunct:any;
+    @Prop({required:true}) imageSource:string;
     
+    //Methods
+    getImgUrl(pic) {
+        return require('../../assets/'+pic)
+    }
 
     // DATA -------------------------------------------------------------------------------------------
     private formOptions: any = {
