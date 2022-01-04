@@ -22,6 +22,7 @@ class LongSubmission {
         this.totalMET = -1
         this.sittingPerWeek = -1;
         this.avgSittingPerDay =-1;
+        this.totalMETSPerDomain = [];
 
         this.categoricalScore = '';
 
@@ -38,6 +39,7 @@ class LongSubmission {
             "moderateMET": this.moderateMET,
             "vigorousMET": this.vigorousMET,
             "totalMET": this.totalMET,
+            "totalMETSPerDomain":this.totalMETSPerDomain,
             "daysPerWeekArray":this.daysPerWeekArray,
             "categoricalScore":this.categoricalScore,
             "sittingPerWeek":this.sittingPerWeek,
@@ -162,6 +164,7 @@ class LongSubmission {
         }
         console.log("TotalMETS per domain");
         console.log(totalMETSPerDomain);
+        this.totalMETSPerDomain = totalMETSPerDomain;
         // Calculate Total scores for Walking, Moderate and Vigorous Physical Activities 6.2:https://docs.google.com/a/student.uhasselt.be/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnx0aGVpcGFxfGd4OjE0NDgxMDk3NDU1YWRlZTM
         
         this.walkingMET = walkingMETs.reduce((a, b) => a + b, 0); // Take SUM
