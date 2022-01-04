@@ -52,16 +52,16 @@ class ShortSubmission {
     readAnswersIntoVars(){
         for(let answer of this.answers["answers"]){
             if(answer['activity'] == ActivityType.WALKING){
-                continue;
+                // Fill daysWalking 30min.
+                if(answer['hoursPerDay']>=1||answer['minutesPerDay']>=30){
+                    this.daysWalking30min = answer['daysPerWeek'];
+                    }
             }
         // Fill daysPerWeekArray
             this.daysPerWeekArray[answer['activity']] = answer['daysPerWeek'];
-        // Fill daysWalking 30min.
-            if(answer['activity']==ActivityType.WALKING && (answer['hoursPerDay']>=1||answer['minutesPerDay']>=30)){
-                    this.daysWalking30min = answer['daysPerWeek'];
-            }
-        // Fill daysWalking 30min.
-            else if(answer['activity']==ActivityType.VIGOROUS && (answer['hoursPerDay']>=1||answer['minutesPerDay']>=20)){
+    
+        // Fill vigorousdays 20min.
+            if(answer['activity']==ActivityType.VIGOROUS && (answer['hoursPerDay']>=1||answer['minutesPerDay']>=20)){
                 this.daysOfVigorousActivity20min=answer['daysPerWeek'];
             }
         }

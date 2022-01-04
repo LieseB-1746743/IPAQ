@@ -55,18 +55,19 @@ class LongSubmission {
             let domain = domainAnswers.domain;
             for(let answer of domainAnswers.answersmodel){
                 if(answer['activity'] == ActivityType.WALKING){
+                    // Fill daysWalking 30min.
+                    if(answer['hoursPerDay']>=1||answer['minutesPerDay']>=30){
+                    this.daysWalking30min += answer['daysPerWeek'];
+                    }
                     continue;
                 }
 
                 // Fill daysPerWeekArray
                 this.daysPerWeekArray[domain][answer['activity']] += answer['daysPerWeek'];
 
-                // Fill daysWalking 30min.
-                if(answer['activity']==ActivityType.WALKING && (answer['hoursPerDay']>=1||answer['minutesPerDay']>=30)){
-                        this.daysWalking30min += answer['daysPerWeek'];
-                }
-                // Fill daysWalking 30min.
-                else if(answer['activity']==ActivityType.VIGOROUS && (answer['hoursPerDay']>=1||answer['minutesPerDay']>=20)){
+              
+                // Fill vigorousdays 20.
+                if(answer['activity']==ActivityType.VIGOROUS && (answer['hoursPerDay']>=1||answer['minutesPerDay']>=20)){
                     this.daysOfVigorousActivity20min+=answer['daysPerWeek'];
                 }
 
