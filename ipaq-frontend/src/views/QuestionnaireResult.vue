@@ -66,6 +66,129 @@ export default class Questionnaire extends Vue {
 
     return answerBody;
   }
+  // FOR ..:8000/scoring/long endpoint (IPAQ long)
+  /*{
+    "name": "Kris Luyten",
+    "age": 42,
+    "sex": "M",
+    "answers": [
+        {
+            "domain": 0,
+            "answersmodel": [ 
+                {
+                    "activity": 0,
+                    "daysPerWeek": 2,
+                    "hoursPerDay": 5,
+                    "minutesPerDay": 50
+                },
+                {
+                    "activity": 1,
+                    "daysPerWeek": 5,
+                    "hoursPerDay": 5,
+                    "minutesPerDay": 50
+                },
+                {
+                    "activity": 2,
+                    "daysPerWeek": 5,
+                    "hoursPerDay": 0,
+                    "minutesPerDay": 30
+                }              
+
+            ]
+        },
+        {
+            "domain": 1,
+            "answersmodel": [ 
+                {
+                    "activity": 4,
+                    "daysPerWeek": 5,
+                    "hoursPerDay": 0,
+                    "minutesPerDay": 50
+                },
+                {
+                    "activity": 5,
+                    "daysPerWeek": 2,
+                    "hoursPerDay": 0,
+                    "minutesPerDay": 30
+                },
+                {
+                    "activity": 2,
+                    "daysPerWeek": 0,
+                    "hoursPerDay": 0,
+                    "minutesPerDay": 0
+                }         
+
+            ]
+        },
+        {
+            "domain": 2,
+            "answersmodel": [ 
+                {
+                    "activity": 0,
+                    "daysPerWeek": 1,
+                    "hoursPerDay": 3,
+                    "minutesPerDay": 0
+                },
+                {
+                    "activity": 1,
+                    "daysPerWeek": 2,
+                    "hoursPerDay": 0,
+                    "minutesPerDay": 30
+                },
+                {
+                    "activity": 6,
+                    "daysPerWeek": 5,
+                    "hoursPerDay": 0,
+                    "minutesPerDay": 50
+                }         
+
+            ]
+        },
+        {
+            "domain": 4,
+            "answersmodel": [ 
+                {
+                    "activity": 4,
+                    "daysPerWeek": 3,
+                    "hoursPerDay": 1,
+                    "minutesPerDay": 0
+                },
+                {
+                    "activity": 0,
+                    "daysPerWeek": 2,
+                    "hoursPerDay": 0,
+                    "minutesPerDay": 30
+                },
+                {
+                    "activity": 1,
+                    "daysPerWeek": 5,
+                    "hoursPerDay": 0,
+                    "minutesPerDay": 15
+                }         
+
+            ]
+        },
+        {
+            "domain": 3,
+            "answersmodel": [ 
+                {
+                    "activity": 3,
+                    "daysPerWeek": 5,
+                    "hoursPerDay": 5,
+                    "minutesPerDay": 56
+                },
+                {
+                    "activity": 3,
+                    "daysPerWeek": 2,
+                    "hoursPerDay": 8,
+                    "minutesPerDay": 30
+                }   
+
+            ]
+        }
+       
+    ]
+}*/
     created(){
       this.answersModel = this.getParams()
       this.answersBody =  this.handleAnswersToRightBackendScoringFormat(this.answersModel);
