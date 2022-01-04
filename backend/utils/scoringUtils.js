@@ -1,6 +1,7 @@
 const { json } = require('express');
 var activityEnum = require('../utils/activityENUM');
 var ShortSubmission =  require('../utils/ShortSubmission');
+var LongSubmission  =  require('../utils/LongSubmission');
 
 // Official scoring = https://docs.google.com/a/student.uhasselt.be/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnx0aGVpcGFxfGd4OjE0NDgxMDk3NDU1YWRlZTM
 //---------------------------------------------------------------------------------------------------------------
@@ -12,6 +13,14 @@ var ShortSubmission =  require('../utils/ShortSubmission');
 function handleNewSubmission(submissionBody){
 
     let sub = new ShortSubmission(submissionBody);
+
+    return sub.createSubmissionOutput();
+
+}
+
+function handleNewSubmissionLong(submissionBody){
+
+    let sub = new LongSubmission(submissionBody);
 
     return sub.createSubmissionOutput();
 
@@ -115,4 +124,4 @@ the levels of physical activity associated with health benefits for measures suc
 IPAQ, which report on a broad range of domains of physical activity.*/
 
 
-module.exports = {calculateLongIPAQscores, calculateShortIPAQscores,handleNewSubmission}
+module.exports = {calculateLongIPAQscores, calculateShortIPAQscores,handleNewSubmission,handleNewSubmissionLong}
