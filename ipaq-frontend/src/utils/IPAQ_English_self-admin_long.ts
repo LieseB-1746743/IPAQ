@@ -1,7 +1,7 @@
 const pages: any = [
     {
       "pageID": 1,
-      "model": { "job": 0, "jobVigorousDays": 0, "jobModerateDays": 0, "jobWalkingDays": 0},
+      "model": { "job": -1, "jobVigorousDays": 0, "jobModerateDays": 0, "jobWalkingDays": 0, "transTravelDays":0, "transBicycleDays":0, "transWalkingDays":0, "gardenVigorousDays":0, "gardenModerateDays":0},
       "schemas": [
         {
             id: 1,
@@ -22,6 +22,10 @@ const pages: any = [
                 }
                 ]
           }, 
+          formOptions: {
+            validateAfterLoad: true,
+            validateAfterChanged: true
+        },
           showif: function(){
             return true;
           }
@@ -52,7 +56,7 @@ const pages: any = [
                 ]
           }, 
           showif: function(model){
-            return model.job != false;
+            return model.job && model.job !=-1;;
           }
         },
 
@@ -137,7 +141,7 @@ const pages: any = [
                 ]
           }, 
           showif: function(model){
-            return model.job != false;
+            return model.job != 0 && model.job !=-1;
           }
         },
         {
@@ -202,7 +206,7 @@ const pages: any = [
                 {
                     type: 'select',
                     label: 'During the <b>last 7 days</b>, on how many days did you <b>walk</b> for at least 10 minutes at a time <b>as part of your work</b>? Please do not count any walking you did to travel to or from work.',
-                    model: 'jobWwalkingDays',
+                    model: 'jobWalkingDays',
                     values: function() {
                         return [
                             {id:0, name:'No job-related walking'},
@@ -221,7 +225,7 @@ const pages: any = [
                 ]
           }, 
           showif: function(model){
-            return model.job != false;
+            return model.job != false && model.job !=-1;;
           }
         },
         {
@@ -287,12 +291,18 @@ const pages: any = [
                 fields: [
                 {
                     type: 'select',
-                    label: 'Analoog aan vorige page => FIRST optimize short & first page form',
-                    model: 'TODO',
+                    label: 'During the <b>last 7 days</b>,on how many days did you <b>travel in a motor vehicle</b> like a train, bus, car, or tram?',
+                    model: 'transTravelDays',
                     values: function() {
                         return [
-                            {id:0, name:'OPTION'},
-                         
+                            {id:0, name:'No traveling in a motor vehicle'},
+                            {id:1, name:'1 day'},
+                            {id:2, name:'2 days'},
+                            {id:3, name: '3 days'},
+                            {id:4, name: '4 days'},
+                            {id:5, name: '5 days'},
+                            {id:6, name: '6 days'},
+                            {id:7, name: '7 days'}
 
                         ]
                     },               
@@ -300,13 +310,474 @@ const pages: any = [
                 }
                 ]
           }, 
-          showif: function(){
+          showif: function(model){
             return true;
           }
         },
+        {
+            id: 2,
+            schema: {
+                
+                fields: [
+                    {                                            
+                        label: 'How much time did you usually spend on one of those days <b>traveling</b> in a train, bus, car, tram, or other kind of motor vehicle?',                                                                    
+                    },
+                    
+                ],
+
+                groups: [{
+                    legend: "",
+                    styleClasses: "col-md-10",
+                    fields: [{
+                                type: "input",
+                                inputType:"number",                    
+                                label: 'Hours ',
+                                model: 'transTravelTimeHours',
+                                styleClasses: "col-md-3",
+                                hint: "0-16",
+                                max:16,
+                                min:0,
+                                value:0,
+                                placeholder:"0",
+                                validator:['number', 'integer']
+                        },
+                        {
+                            type: "input",
+                            inputType:"number",
+                            label: 'Minutes per day',
+                            model: 'transTravelTimeMinutes',
+                            styleClasses: "col-md-3",
+                            hint: "0-60",
+                            max:60,
+                            min:0,
+                            value:0,
+                            placeholder:"0",
+                            validator:['number', 'integer']
+                        }
+                    ]
+                },
+                ]
+
+        },
+        
+        formOptions: {
+            validateAfterLoad: true,
+            validateAfterChanged: true
+        },
+            showif: function(model){
+                return model.transTravelDays != 0;
+            }
+        },
+        {
+            id: 3,
+            schema: {
+                fields: [
+                {
+                    type: 'select',
+                    label: 'During the <b>last 7 days</b>, on how many days did you <b>bicycle</b> for at least 10 minutes at a time to go <b>from place to place?</b>?',
+                    model: 'transBicycleDays',
+                    values: function() {
+                        return [
+                            {id:0, name:'No bicycling from place to place'},
+                            {id:1, name: '1 day'},
+                            {id:2, name: '2 days'},
+                            {id:3, name: '3 days'},
+                            {id:4, name: '4 days'},
+                            {id:5, name: '5 days'},
+                            {id:6, name: '6 days'},
+                            {id:7, name: '7 days'}
+
+                        ]
+                    },               
+                    required: true,
+                }
+                ]
+          }, 
+          showif: function(model){
+            return true;
+          }
+        },
+        {
+            id: 4,
+            schema: {
+                
+                fields: [
+                    {                                            
+                        label: 'How much time did you usually spend on one of those days <b>bicycle</b> from place to place?',
+                                                                    
+                    },
+                    
+                ],
+
+                groups: [{
+                    legend: "",
+                    styleClasses: "col-md-10",
+                    fields: [{
+                                type: "input",
+                                inputType:"number",                    
+                                label: 'Hours ',
+                                model: 'transBicycleTimeHours',
+                                styleClasses: "col-md-3",
+                                hint: "0-16",
+                                max:16,
+                                min:0,
+                                value:0,
+                                placeholder:"0",
+                                validator:['number', 'integer']
+                        },
+                        {
+                            type: "input",
+                            inputType:"number",
+                            label: 'Minutes per day',
+                            model: 'transBicycleTimeMinutes',
+                            styleClasses: "col-md-3",
+                            hint: "0-60",
+                            max:60,
+                            min:0,
+                            value:0,
+                            placeholder:"0",
+                            validator:['number', 'integer']
+                        }
+                    ]
+                },
+                ]
+            },
+                showif: function(model){
+                    console.log(model);
+                    return model.transBicycleDays != 0;
+                }
+        },         
+        {
+            id: 5,
+            schema: {
+                fields: [
+                {
+                    type: 'select',
+                    label: 'During the <b>last 7 days</b>, on how many days did you <b>walk</b> for at least 10 minutes at a time <b>as part of your work</b>? Please do not count any walking you did to travel to or from work.',
+                    model: 'transWalkingDays',
+                    values: function() {
+                        return [
+                            {id:0, name:'No walking from place to place'},
+                            {id:1, name:'1 day'},
+                            {id:2, name:'2 days'},
+                            {id:3, name: '3 days'},
+                            {id:4, name: '4 days'},
+                            {id:5, name: '5 days'},
+                            {id:6, name: '6 days'},
+                            {id:7, name: '7 days'}
+
+                        ]
+                    },               
+                    required: true,
+                }
+                ]
+          }, 
+          showif: function(model){
+            return true;
+          }
+        },
+        {
+            id: 6,
+            schema: {
+                
+                fields: [
+                    {                                            
+                        label: 'How much time did you usually spend on one of those days <b>walking</b> from place to place?',
+                                                                    
+                    },
+                    
+                ],
+
+                groups: [{
+                    legend: "",
+                    styleClasses: "col-md-10",
+                    fields: [{
+                                type: "input",
+                                inputType:"number",                    
+                                label: 'Hours ',
+                                model: 'transWalkingTimeHours',
+                                styleClasses: "col-md-3",
+                                hint: "0-16",
+                                max:16,
+                                min:0,
+                                value:0,
+                                placeholder:"0",
+                                validator:['number', 'integer']
+                        },
+                        {
+                            type: "input",
+                            inputType:"number",
+                            label: 'Minutes per day',
+                            model: 'transWalkingTimeMinutes',
+                            styleClasses: "col-md-3",
+                            hint: "0-60",
+                            max:60,
+                            min:0,
+                            value:0,
+                            placeholder:"0",
+                            validator:['number', 'integer']
+                        }
+                    ]
+                },
+                ]
+            },
+                showif: function(model){
+                    console.log(model);
+                    return model.transWalkingDays != 0;
+                }
+        },                    
 
         ]
-      }
+      },
+      {
+      
+        "pageID": 3,
+        "model": {},
+        "schemas": [
+          {
+              id: 1,
+              schema: {
+                  fields: [
+                  {
+                      type: 'select',
+                      label: 'Think about only those physical activities that you did for at least 10 minutes at a time. During the <b>last 7 days</b>, on how many days did you do <b>vigorous</b> physical activities like heavy lifting, chopping wood, shoveling snow, or digging <b>in the garden or yard</b>?',
+                      model: 'gardenVigorousDays',
+                      values: function() {
+                          return [
+                              {id:0, name:'No vigorous activity in garden or yard'},
+                              {id:1, name:'1 day'},
+                              {id:2, name:'2 days'},
+                              {id:3, name: '3 days'},
+                              {id:4, name: '4 days'},
+                              {id:5, name: '5 days'},
+                              {id:6, name: '6 days'},
+                              {id:7, name: '7 days'}
+  
+                          ]
+                      },               
+                      required: true,
+                  }
+                  ]
+            }, 
+            showif: function(model){
+              return true;
+            }
+          },
+          {
+              id: 2,
+              schema: {
+                  
+                  fields: [
+                      {                                            
+                          label: 'How much time did you usually spend on one of those days doing <b>vigorous</b> physical activities in the garden or yard?',                                                                    
+                      },
+                      
+                  ],
+  
+                  groups: [{
+                      legend: "",
+                      styleClasses: "col-md-10",
+                      fields: [{
+                                  type: "input",
+                                  inputType:"number",                    
+                                  label: 'Hours ',
+                                  model: 'gardenVigorousTimeHours',
+                                  styleClasses: "col-md-3",
+                                  hint: "0-16",
+                                  max:16,
+                                  min:0,
+                                  value:0,
+                                  placeholder:"0",
+                                  validator:['number', 'integer']
+                          },
+                          {
+                              type: "input",
+                              inputType:"number",
+                              label: 'Minutes per day',
+                              model: 'gardenVigorousTimeMinutes',
+                              styleClasses: "col-md-3",
+                              hint: "0-60",
+                              max:60,
+                              min:0,
+                              value:0,
+                              placeholder:"0",
+                              validator:['number', 'integer']
+                          }
+                      ]
+                  },
+                  ]
+  
+          },
+          
+          formOptions: {
+              validateAfterLoad: true,
+              validateAfterChanged: true
+          },
+              showif: function(model){
+                  return model.transTravelDays != 0;
+              }
+          },
+          {
+              id: 3,
+              schema: {
+                  fields: [
+                  {
+                      type: 'select',
+                      label: 'During the <b>last 7 days</b>, on how many days did you <b>bicycle</b> for at least 10 minutes at a time to go <b>from place to place?</b>?',
+                      model: 'gardenModerateDays',
+                      values: function() {
+                          return [
+                              {id:0, name:'No moderate activity in garden or yard'},
+                              {id:1, name: '1 day'},
+                              {id:2, name: '2 days'},
+                              {id:3, name: '3 days'},
+                              {id:4, name: '4 days'},
+                              {id:5, name: '5 days'},
+                              {id:6, name: '6 days'},
+                              {id:7, name: '7 days'}
+  
+                          ]
+                      },               
+                      required: true,
+                  }
+                  ]
+            }, 
+            showif: function(model){
+              return true;
+            }
+          },
+          {
+              id: 4,
+              schema: {
+                  
+                  fields: [
+                      {                                            
+                          label: 'How much time did you usually spend on one of those days <b>bicycle</b> from place to place?',
+                                                                      
+                      },
+                      
+                  ],
+  
+                  groups: [{
+                      legend: "",
+                      styleClasses: "col-md-10",
+                      fields: [{
+                                  type: "input",
+                                  inputType:"number",                    
+                                  label: 'Hours ',
+                                  model: 'transBicycleTimeHours',
+                                  styleClasses: "col-md-3",
+                                  hint: "0-16",
+                                  max:16,
+                                  min:0,
+                                  value:0,
+                                  placeholder:"0",
+                                  validator:['number', 'integer']
+                          },
+                          {
+                              type: "input",
+                              inputType:"number",
+                              label: 'Minutes per day',
+                              model: 'transBicycleTimeMinutes',
+                              styleClasses: "col-md-3",
+                              hint: "0-60",
+                              max:60,
+                              min:0,
+                              value:0,
+                              placeholder:"0",
+                              validator:['number', 'integer']
+                          }
+                      ]
+                  },
+                  ]
+              },
+                  showif: function(model){
+                      console.log(model);
+                      return model.transBicycleDays != 0;
+                  }
+          },         
+          {
+              id: 5,
+              schema: {
+                  fields: [
+                  {
+                      type: 'select',
+                      label: 'During the <b>last 7 days</b>, on how many days did you <b>walk</b> for at least 10 minutes at a time <b>as part of your work</b>? Please do not count any walking you did to travel to or from work.',
+                      model: 'transWalkingDays',
+                      values: function() {
+                          return [
+                              {id:0, name:'No walking from place to place'},
+                              {id:1, name:'1 day'},
+                              {id:2, name:'2 days'},
+                              {id:3, name: '3 days'},
+                              {id:4, name: '4 days'},
+                              {id:5, name: '5 days'},
+                              {id:6, name: '6 days'},
+                              {id:7, name: '7 days'}
+  
+                          ]
+                      },               
+                      required: true,
+                  }
+                  ]
+            }, 
+            showif: function(model){
+              return true;
+            }
+          },
+          {
+              id: 6,
+              schema: {
+                  
+                  fields: [
+                      {                                            
+                          label: 'How much time did you usually spend on one of those days <b>walking</b> from place to place?',
+                                                                      
+                      },
+                      
+                  ],
+  
+                  groups: [{
+                      legend: "",
+                      styleClasses: "col-md-10",
+                      fields: [{
+                                  type: "input",
+                                  inputType:"number",                    
+                                  label: 'Hours ',
+                                  model: 'transWalkingTimeHours',
+                                  styleClasses: "col-md-3",
+                                  hint: "0-16",
+                                  max:16,
+                                  min:0,
+                                  value:0,
+                                  placeholder:"0",
+                                  validator:['number', 'integer']
+                          },
+                          {
+                              type: "input",
+                              inputType:"number",
+                              label: 'Minutes per day',
+                              model: 'transWalkingTimeMinutes',
+                              styleClasses: "col-md-3",
+                              hint: "0-60",
+                              max:60,
+                              min:0,
+                              value:0,
+                              placeholder:"0",
+                              validator:['number', 'integer']
+                          }
+                      ]
+                  },
+                  ]
+              },
+                  showif: function(model){
+                      console.log(model);
+                      return model.transWalkingDays != 0;
+                  }
+          },                    
+  
+          ]
+        }
 ];
 
 const parts:any = [

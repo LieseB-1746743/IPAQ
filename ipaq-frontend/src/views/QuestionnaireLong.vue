@@ -61,6 +61,10 @@ export default class Questionnaire extends Vue {
     console.log("CLICK nxt Btn");
 
     // Only proceed when form is valid
+    if(this.pages[0].model.job ==-1){
+        alert("Form is not valid! Please answer the job-related question.");
+        return;
+    }
     if(!this.pageIsValidated){
       alert("Form is not valid! Please correct the invalid answers.");
       return;
