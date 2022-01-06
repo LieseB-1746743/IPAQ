@@ -17,7 +17,6 @@
       <b-button v-if="submit" id="submit-btn" variant="outline-primary" size="lg" v-on:click="SubmitBtnClicked" >Submit</b-button>
     </b-col>   
   </b-row>
- <Chatbot/>
 </div>
 </template>
 
@@ -25,15 +24,12 @@
 import { Component, Vue } from "vue-property-decorator";
 import FormGroup from "../components/FormGroup/FormGroup.vue";
 import AnswerOverview from "../components/AnswerOverview/AnswerOverview.vue";
-import Chatbot from "../components/Chatbot.vue";
 import IPAQ_short from "../utils/IPAQ_English_self-admin_short";
-import router from '../router';
 
 @Component({
   components: {
     FormGroup,
-    AnswerOverview,
-    Chatbot
+    AnswerOverview
   },
 })
 

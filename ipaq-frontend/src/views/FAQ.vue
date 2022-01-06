@@ -15,8 +15,6 @@
     <h5>Different sorts of activities </h5>
     <img src="../assets/vigorousVSmoderate2.jpg" height="500rem" width="500rem"/> 
     <img src="../assets/moderateVSvigorous.png" height="500rem" width="500rem"/> 
-        
-    <Chatbot/>
   </div>
 </template>
 
@@ -24,12 +22,9 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 
-import Chatbot from "../components/Chatbot.vue";
-
 
 @Component({
   components: {
-    Chatbot
   },
 })
 
