@@ -5,7 +5,7 @@
     <FormGroup  :schemas="currentPage.schemas" :model="pages[0].model" :part="currentPart" :validatedfunct="onValidated" :imageSource="imagesWithPageAsIndex[currentpageIndex]"/>
   </div>
   <div v-if="submit" >
-    <h1> ANSWER OVERVIEW </h1>
+    <h1>Answers</h1>
     <AnswerOverview  v-for="page in pages" :key="page.pageID" :schemas="page.schemas" :model="pages[0].model" :parts="parts" :partID="page.pageID" />
   </div>
    

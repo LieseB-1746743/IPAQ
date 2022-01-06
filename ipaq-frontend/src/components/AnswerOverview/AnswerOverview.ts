@@ -5,68 +5,53 @@ import { Component, Prop } from 'vue-property-decorator';
 @Component
 export default class AnswerOverview extends Vue {
     // PROPS ------------------------------------------------------------------------------------------
+
     @Prop({required: true}) readonly schemas: any[]; // Contains the questions ONE PAGE
     @Prop({required: true}) model: any; // Contains the 
     @Prop({required: true}) parts: any; // Contains the parts
     @Prop({required: true}) partID: any; // Contains the parts
 
+    // DATA -------------------------------------------------------------------------------------------
+
     private formOverview:any = [];
+    private questionAnswerPairs: any = [];
+    private partTitle = "";
 
  
-    // Methods
+    // LIFECYCLE HOOKS --------------------------------------------------------------------------------
 
-    // Handle ONE page
     mounted(){
-        let temp;
-        //console.log('SCHEMAS');
-        //console.log(this.schemas);
-        this.formOverview.push(" <h3> " + String(this.parts[this.partID-1].ipaqPartTitle) +"</h3>");
-      
-       
-        for(const item of this.schemas){
-            temp = '';
-            //console.log('ITEM iteration');
-            console.log(item);
-
-            // Get Q & normal A
-            for(const field of item.schema.fields){
-                temp+=(String(field.label));
-                temp+=('\n\n');
-                console.log(temp);
-                this.formOverview.push(temp);
-                if(field.model != undefined){
-                    this.formOverview.push(String(this.model[field.model]));
-                }
-
-            };
-        
-
-            if(item.schema.groups!=undefined){
-                // Get grouped A
-                for(const field of item.schema.groups[0].fields){
-                    temp = "  ";
-                    temp+=(String(field.label));                            
-                 
-                    if(field.model != undefined){
-                        this.formOverview.push(String(this.model[field.model])+ temp);
+        console.log(this.schemas);
+        this.partTitle = String(this.parts[this.partID-1].ipaqPartTitle);
+        for (const schema of this.schemas) {
+            for (const field of schema.schema.fields) {
+                if (this.model != undefined){
+                    const answer = this.model[field.model];
+                    if (answer != undefined){
+                        const question = String(field.label);
+                        this.questionAnswerPairs.push([question,answer]);
                     }
-
-                };
-
-            }else{
-
-                //console.log("No Groups");
-                
-            }   
-           
-        }  
-        this.formOverview.push('<br/>');      
-     
+                }
+            }
+            
+            if (schema.schema.groups !== undefined){
+                let answerDefined = true;
+                let answer = "";
+                for (const field of schema.schema.groups[0].fields) {
+                    const label = field.label;
+                    const value = this.model[field.model];
+                    if (value === undefined) {
+                        answerDefined = false;
+                    }
+                    answer += `${label}: ${value}, `
+                }
+                const question = String(schema.schema.fields[0].label);
+                if (answerDefined)
+                    this.questionAnswerPairs.push([question, answer.slice(0, -2)]);
+            }
+        }
     }    
 
-    // DATA -------------------------------------------------------------------------------------------
-    
-    
     // COMPUTED PROPERTIES ----------------------------------------------------------------------------
   
 }
