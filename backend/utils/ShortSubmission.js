@@ -16,7 +16,7 @@ class ShortSubmission {
 
 
     constructor(answers) {
-      
+        console.log(answers);
         this.daysOfVigorousActivity20min = -1;
         this.daysWalking30min = -1;
         this.daysPerWeekArray=[-1,-1,-1,-1,-1]; // Index matches activity type ( VIGOROUS;MODERATE;WALKING;SITTING =3)

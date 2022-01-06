@@ -1,7 +1,7 @@
 const pages: any = [
     {
       "pageID": 1,
-      "model": { "vigorousDays": 0, "moderateDays": 0, "walkingDays": 0},
+      "model": { "vigorousDays": 0, "moderateDays": 0, "walkingDays": 0, "moderateTimeHours":0, "moderateTimeMinutes":0,"vigorousTimeHours": 0, "vigorousTimeMinutes": 0, "walkingTimeHours": 0, "walkingTimeMinutes": 0, "sittingTimeHours": 0, "sittingTimeMinutes": 0 },
       "schemas": [
         {
             id: 1,
@@ -45,7 +45,7 @@ const pages: any = [
                     
                 ],
 
-                groups: [{
+                groups: [{     
                     legend: "",
                     styleClasses: "col-md-10",
                     fields: [{
@@ -60,6 +60,7 @@ const pages: any = [
                                 value:0,
                                 placeholder:"0",
                                 validator:['number', 'integer']
+                                
                         },
                         {
                             type: "input",
@@ -72,7 +73,7 @@ const pages: any = [
                             min:0,
                             value:0,
                             placeholder:"0",
-                            validator:['number', 'integer']
+                            validator:['number', 'integer','MinutesValidator']
                         }
                     ]
                 },

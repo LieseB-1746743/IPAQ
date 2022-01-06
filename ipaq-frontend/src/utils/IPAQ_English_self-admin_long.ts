@@ -1,7 +1,7 @@
 const pages: any = [
     {
       "pageID": 1,
-      "model": { "job": -1, "jobVigorousDays": 0, "jobModerateDays": 0, "jobWalkingDays": 0, "transTravelDays":0, "transBicycleDays":0, "transWalkingDays":0, "gardenVigorousDays":0, "gardenModerateDays":0},
+      "model": { "job": -1, "jobVigorousDays":0, "jobVigorousTimeHours":0, "jobVigorousTimeMinutes":0, "jobModerateDays":0, "jobModerateTimeHours":0, "jobModerateTimeMinutes":0, "jobWalkingDays":0, "jobWalkingTimeHours":0, "jobWalkingTimeMinutes":0, "transTravelDays":0, "transTravelTimeHours":0, "transTravelTimeMinutes":0, "transBicycleDays":0, "transBicycleTimeHours":0, "transBicycleTimeMinutes":0, "transWalkingDays":0, "transWalkingTimeHours":0, "transWalkingTimeMinutes":0, "gardenVigorousDays":0, "gardenVigorousTimeHours":0, "gardenVigorousTimeMinutes":0, "gardenModerateDays":0, "gardenModerateTimeHours":0, "gardenModerateTimeMinutes":0, "insideModerateDays":0, "insideModerateTimeHours":0, "insideModerateTimeMinutes":0, "leisureWalkingDays":0, "leisureWalkingTimeHours":0, "leisureWalkingTimeMinutes":0, "leisureVigorousDays":0, "leisureVigorousTimeHours":0, "leisureVigorousTimeMinutes":0, "leisureModerateDays":0, "leisureModerateTimeHours":0, "leisureModerateTimeMinutes":0, "sittingWeekdayTimeHours":0, "sittingWeekdayTimeMinutes":0, "sittingWeekenddayTimeHours":0, "sittingWeekenddayTimeMinutes":0 },
       "schemas": [
         {
             id: 1,
@@ -36,7 +36,7 @@ const pages: any = [
                 fields: [
                 {
                     type: 'select',
-                    label: 'During the <b>last 7 days</b>, on how many days did you do <b>vigorous</b> physical activities like heavy lifting, digging, aerobics, or fast bicycling?',
+                    label: 'During the <b>last 7 days</b>, on how many days did you do <b>vigorous</b> physical activities like heavy lifting, digging, heavy construction, or climbing up stairs <b>as part of your work</b>? Think about only those physical activities that you did for at least 10 minutes at a time.',
                     model: 'jobVigorousDays',
                     values: function() {
                         return [
@@ -528,48 +528,518 @@ const pages: any = [
         },                    
 
         ]
-      },
-      {
-      
+    },
+    {
+    
         "pageID": 3,
+        "model": {},
+        "schemas": [
+            {
+                id: 1,
+                schema: {
+                    fields: [
+                    {
+                        type: 'select',
+                        label: 'Think about only those physical activities that you did for at least 10 minutes at a time. During the <b>last 7 days</b>, on how many days did you do <b>vigorous</b> physical activities like heavy lifting, chopping wood, shoveling snow, or digging <b>in the garden or yard</b>?',
+                        model: 'gardenVigorousDays',
+                        values: function() {
+                            return [
+                                {id:0, name:'No vigorous activity in garden or yard'},
+                                {id:1, name:'1 day'},
+                                {id:2, name:'2 days'},
+                                {id:3, name: '3 days'},
+                                {id:4, name: '4 days'},
+                                {id:5, name: '5 days'},
+                                {id:6, name: '6 days'},
+                                {id:7, name: '7 days'}
+    
+                            ]
+                        },               
+                        required: true,
+                    }
+                    ]
+            }, 
+            showif: function(model){
+                return true;
+            }
+            },
+            {
+                id: 2,
+                schema: {
+                    
+                    fields: [
+                        {                                            
+                            label: 'How much time did you usually spend on one of those days doing <b>vigorous</b> physical activities in the garden or yard?',                                                                    
+                        },
+                        
+                    ],
+    
+                    groups: [{
+                        legend: "",
+                        styleClasses: "col-md-10",
+                        fields: [{
+                                    type: "input",
+                                    inputType:"number",                    
+                                    label: 'Hours ',
+                                    model: 'gardenVigorousTimeHours',
+                                    styleClasses: "col-md-3",
+                                    hint: "0-16",
+                                    max:16,
+                                    min:0,
+                                    value:0,
+                                    placeholder:"0",
+                                    validator:['number', 'integer']
+                            },
+                            {
+                                type: "input",
+                                inputType:"number",
+                                label: 'Minutes per day',
+                                model: 'gardenVigorousTimeMinutes',
+                                styleClasses: "col-md-3",
+                                hint: "0-60",
+                                max:60,
+                                min:0,
+                                value:0,
+                                placeholder:"0",
+                                validator:['number', 'integer']
+                            }
+                        ]
+                    },
+                    ]
+    
+            },
+            
+            formOptions: {
+                validateAfterLoad: true,
+                validateAfterChanged: true
+            },
+                showif: function(model){
+                    return model.gardenVigorousDays != 0;
+                }
+            },
+            {
+                id: 3,
+                schema: {
+                    fields: [
+                    {
+                        type: 'select',
+                        label: 'Again, think about only those physical activities that you did for at least 10 minutes at a time. During the <b>last 7 days</b>, on how many days did you do <b>moderate</b> activities activities like carrying light loads, sweeping, washing windows, and raking <b>in the garden or yard</b>?',
+                        model: 'gardenModerateDays',
+                        values: function() {
+                            return [
+                                {id:0, name:'No moderate activity in garden or yard'},
+                                {id:1, name: '1 day'},
+                                {id:2, name: '2 days'},
+                                {id:3, name: '3 days'},
+                                {id:4, name: '4 days'},
+                                {id:5, name: '5 days'},
+                                {id:6, name: '6 days'},
+                                {id:7, name: '7 days'}
+    
+                            ]
+                        },               
+                        required: true,
+                    }
+                    ]
+            }, 
+            showif: function(model){
+                return true;
+            }
+            },
+            {
+                id: 4,
+                schema: {
+                    
+                    fields: [
+                        {                                            
+                            label: 'How much time did you usually spend on one of those days doing <b>moderate</b> activities in the garden or yard?',
+                                                                        
+                        },
+                        
+                    ],
+    
+                    groups: [{
+                        legend: "",
+                        styleClasses: "col-md-10",
+                        fields: [{
+                                    type: "input",
+                                    inputType:"number",                    
+                                    label: 'Hours ',
+                                    model: 'gardenModerateTimeHours',
+                                    styleClasses: "col-md-3",
+                                    hint: "0-16",
+                                    max:16,
+                                    min:0,
+                                    value:0,
+                                    placeholder:"0",
+                                    validator:['number', 'integer']
+                            },
+                            {
+                                type: "input",
+                                inputType:"number",
+                                label: 'Minutes per day',
+                                model: 'gardenModerateTimeMinutes',
+                                styleClasses: "col-md-3",
+                                hint: "0-60",
+                                max:60,
+                                min:0,
+                                value:0,
+                                placeholder:"0",
+                                validator:['number', 'integer']
+                            }
+                        ]
+                    },
+                    ]
+                },
+                    showif: function(model){
+                        console.log(model);
+                        return model.gardenModerateDays != 0;
+                    }
+            },         
+            {
+                id: 5,
+                schema: {
+                    fields: [
+                    {
+                        type: 'select',
+                        label: 'Once again, think about only those physical activities that you did for at least 10 minutes at a time. During the <b>last 7 days</b>, on how many days did you do <b>moderate</b> activities like carrying light loads, washing windows, scrubbing floors and sweeping <b>inside your home</b>?',
+                        model: 'insideModerateDays',
+                        values: function() {
+                            return [
+                                {id:0, name:'No moderate activity inside home'},
+                                {id:1, name:'1 day'},
+                                {id:2, name:'2 days'},
+                                {id:3, name: '3 days'},
+                                {id:4, name: '4 days'},
+                                {id:5, name: '5 days'},
+                                {id:6, name: '6 days'},
+                                {id:7, name: '7 days'}
+    
+                            ]
+                        },               
+                        required: true,
+                    }
+                    ]
+            }, 
+            showif: function(model){
+                return true;
+            }
+            },
+            {
+                id: 6,
+                schema: {
+                    
+                    fields: [
+                        {                                            
+                            label: 'How much time did you usually spend on one of those days doing <b>moderate</b> physical activities inside your home?',
+                                                                        
+                        },
+                        
+                    ],
+    
+                    groups: [{
+                        legend: "",
+                        styleClasses: "col-md-10",
+                        fields: [{
+                                    type: "input",
+                                    inputType:"number",                    
+                                    label: 'Hours ',
+                                    model: 'insideModerateTimeHours',
+                                    styleClasses: "col-md-3",
+                                    hint: "0-16",
+                                    max:16,
+                                    min:0,
+                                    value:0,
+                                    placeholder:"0",
+                                    validator:['number', 'integer']
+                            },
+                            {
+                                type: "input",
+                                inputType:"number",
+                                label: 'Minutes per day',
+                                model: 'insideModerateTimeMinutes',
+                                styleClasses: "col-md-3",
+                                hint: "0-60",
+                                max:60,
+                                min:0,
+                                value:0,
+                                placeholder:"0",
+                                validator:['number', 'integer']
+                            }
+                        ]
+                    },
+                    ]
+                },
+                    showif: function(model){
+                        console.log(model);
+                        return model.insideModerateDays != 0;
+                    }
+            },                    
+    
+            ]
+        },
+        {
+    
+            "pageID": 4,
+            "model": {},
+            "schemas": [
+                {
+                    id: 1,
+                    schema: {
+                        fields: [
+                        {
+                            type: 'select',
+                            label: '<i>Not counting any walking you have already mentioned</i>, during the <b>last 7 days</b>, on how many days did you <b>walk</b> for at least 10 minutes at a time in your leisure time?',                                                                    
+                            model: 'leisureWalkingDays',
+                            values: function() {
+                                return [
+                                    {id:0, name:'No walking in leisure time'},
+                                    {id:1, name:'1 day'},
+                                    {id:2, name:'2 days'},
+                                    {id:3, name: '3 days'},
+                                    {id:4, name: '4 days'},
+                                    {id:5, name: '5 days'},
+                                    {id:6, name: '6 days'},
+                                    {id:7, name: '7 days'}
+        
+                                ]
+                            },               
+                            required: true,
+                        }
+                        ]
+                }, 
+                showif: function(model){
+                    return true;
+                }
+                },
+                {
+                    id: 2,
+                    schema: {
+                        
+                        fields: [
+                            {                                            
+                                label: 'Think about only those physical activities that you did for at least 10 minutes at a time. During the <b>last 7 days</b>, on how many days did you do <b>vigorous</b> physical activities like aerobics, running, fast bicycling, or fast swimming <b>in your leisure time</b>?',                                                                    
+                            },
+                            
+                        ],
+        
+                        groups: [{
+                            legend: "",
+                            styleClasses: "col-md-10",
+                            fields: [{
+                                        type: "input",
+                                        inputType:"number",                    
+                                        label: 'Hours ',
+                                        model: 'leisureWalkingTimeHours',
+                                        styleClasses: "col-md-3",
+                                        hint: "0-16",
+                                        max:16,
+                                        min:0,
+                                        value:0,
+                                        placeholder:"0",
+                                        validator:['number', 'integer']
+                                },
+                                {
+                                    type: "input",
+                                    inputType:"number",
+                                    label: 'Minutes per day',
+                                    model: 'leisureWalkingTimeMinutes',
+                                    styleClasses: "col-md-3",
+                                    hint: "0-60",
+                                    max:60,
+                                    min:0,
+                                    value:0,
+                                    placeholder:"0",
+                                    validator:['number', 'integer']
+                                }
+                            ]
+                        },
+                        ]
+        
+                },
+                
+                formOptions: {
+                    validateAfterLoad: true,
+                    validateAfterChanged: true
+                },
+                    showif: function(model){
+                        return model.leisureWalkingDays != 0;
+                    }
+                },
+                {
+                    id: 3,
+                    schema: {
+                        fields: [
+                        {
+                            type: 'select',
+                            label: 'Again, think about only those physical activities that you did for at least 10 minutes at a time. During the <b>last 7 days</b>, on how many days did you do <b>vigorous</b> activities activities like aerobics, running, fast bicycling, or fast swimming <b>in your leisure time</b>?',
+                            model: 'leisureVigorousDays',
+                            values: function() {
+                                return [
+                                    {id:0, name:'No vigorous activity in leisure time'},
+                                    {id:1, name: '1 day'},
+                                    {id:2, name: '2 days'},
+                                    {id:3, name: '3 days'},
+                                    {id:4, name: '4 days'},
+                                    {id:5, name: '5 days'},
+                                    {id:6, name: '6 days'},
+                                    {id:7, name: '7 days'}
+        
+                                ]
+                            },               
+                            required: true,
+                        }
+                        ]
+                }, 
+                showif: function(model){
+                    return true;
+                }
+                },
+                {
+                    id: 4,
+                    schema: {
+                        
+                        fields: [
+                            {                                            
+                                label: 'How much time did you usually spend on one of those days doing <b>vigorous</b> activities in your leisure time?',
+                                                                            
+                            },
+                            
+                        ],
+        
+                        groups: [{
+                            legend: "",
+                            styleClasses: "col-md-10",
+                            fields: [{
+                                        type: "input",
+                                        inputType:"number",                    
+                                        label: 'Hours ',
+                                        model: 'leisureVigorousTimeHours',
+                                        styleClasses: "col-md-3",
+                                        hint: "0-16",
+                                        max:16,
+                                        min:0,
+                                        value:0,
+                                        placeholder:"0",
+                                        validator:['number', 'integer']
+                                },
+                                {
+                                    type: "input",
+                                    inputType:"number",
+                                    label: 'Minutes per day',
+                                    model: 'leisureVigorousTimeMinutes',
+                                    styleClasses: "col-md-3",
+                                    hint: "0-60",
+                                    max:60,
+                                    min:0,
+                                    value:0,
+                                    placeholder:"0",
+                                    validator:['number', 'integer']
+                                }
+                            ]
+                        },
+                        ]
+                    },
+                        showif: function(model){
+                            console.log(model);
+                            return model.leisureVigorousDays != 0;
+                        }
+                },         
+                {
+                    id: 5,
+                    schema: {
+                        fields: [
+                        {
+                            type: 'select',
+                            label: 'Again, think about only those physical activities that you did for at least 10 minutes at a time. During the <b>last 7 days</b>, on how many days did you do <b>moderate</b> activities like bicycling at a regular pace, swimming at a regular pace, and doubles tennis <b>in your leisure time</b>?',
+                            model: 'leisureModerateDays',
+                            values: function() {
+                                return [
+                                    {id:0, name:'No moderate activity in leisure time'},
+                                    {id:1, name:'1 day'},
+                                    {id:2, name:'2 days'},
+                                    {id:3, name: '3 days'},
+                                    {id:4, name: '4 days'},
+                                    {id:5, name: '5 days'},
+                                    {id:6, name: '6 days'},
+                                    {id:7, name: '7 days'}
+        
+                                ]
+                            },               
+                            required: true,
+                        }
+                        ]
+                }, 
+                showif: function(model){
+                    return true;
+                }
+                },
+                {
+                    id: 6,
+                    schema: {
+                        
+                        fields: [
+                            {                                            
+                                label: 'How much time did you usually spend on one of those days doing <b>moderate</b> physical activities in your leisure time?',
+                                                                            
+                            },
+                            
+                        ],
+        
+                        groups: [{
+                            legend: "",
+                            styleClasses: "col-md-10",
+                            fields: [{
+                                        type: "input",
+                                        inputType:"number",                    
+                                        label: 'Hours ',
+                                        model: 'leisureModerateTimeHours',
+                                        styleClasses: "col-md-3",
+                                        hint: "0-16",
+                                        max:16,
+                                        min:0,
+                                        value:0,
+                                        placeholder:"0",
+                                        validator:['number', 'integer']
+                                },
+                                {
+                                    type: "input",
+                                    inputType:"number",
+                                    label: 'Minutes per day',
+                                    model: 'leisureModerateTimeMinutes',
+                                    styleClasses: "col-md-3",
+                                    hint: "0-60",
+                                    max:60,
+                                    min:0,
+                                    value:0,
+                                    placeholder:"0",
+                                    validator:['number', 'integer']
+                                }
+                            ]
+                        },
+                        ]
+                    },
+                        showif: function(model){
+                            console.log(model);
+                            return model.leisureModerateDays != 0;
+                        }
+                },                    
+        
+        ]
+    },
+    {
+      
+        "pageID": 5,
         "model": {},
         "schemas": [
           {
               id: 1,
               schema: {
-                  fields: [
-                  {
-                      type: 'select',
-                      label: 'Think about only those physical activities that you did for at least 10 minutes at a time. During the <b>last 7 days</b>, on how many days did you do <b>vigorous</b> physical activities like heavy lifting, chopping wood, shoveling snow, or digging <b>in the garden or yard</b>?',
-                      model: 'gardenVigorousDays',
-                      values: function() {
-                          return [
-                              {id:0, name:'No vigorous activity in garden or yard'},
-                              {id:1, name:'1 day'},
-                              {id:2, name:'2 days'},
-                              {id:3, name: '3 days'},
-                              {id:4, name: '4 days'},
-                              {id:5, name: '5 days'},
-                              {id:6, name: '6 days'},
-                              {id:7, name: '7 days'}
-  
-                          ]
-                      },               
-                      required: true,
-                  }
-                  ]
-            }, 
-            showif: function(model){
-              return true;
-            }
-          },
-          {
-              id: 2,
-              schema: {
                   
                   fields: [
                       {                                            
-                          label: 'How much time did you usually spend on one of those days doing <b>vigorous</b> physical activities in the garden or yard?',                                                                    
+                          label: 'During the last 7 days, how much time did you usually spend <b>sitting</b> on a <b>weekday</b>?',
+                                                                      
                       },
                       
                   ],
@@ -581,7 +1051,7 @@ const pages: any = [
                                   type: "input",
                                   inputType:"number",                    
                                   label: 'Hours ',
-                                  model: 'gardenVigorousTimeHours',
+                                  model: 'sittingWeekdayTimeHours',
                                   styleClasses: "col-md-3",
                                   hint: "0-16",
                                   max:16,
@@ -594,7 +1064,7 @@ const pages: any = [
                               type: "input",
                               inputType:"number",
                               label: 'Minutes per day',
-                              model: 'gardenVigorousTimeMinutes',
+                              model: 'sittingWeekdayTimeMinutes',
                               styleClasses: "col-md-3",
                               hint: "0-60",
                               max:60,
@@ -606,178 +1076,64 @@ const pages: any = [
                       ]
                   },
                   ]
-  
-          },
-          
-          formOptions: {
-              validateAfterLoad: true,
-              validateAfterChanged: true
           },
               showif: function(model){
-                  return model.transTravelDays != 0;
+                  return true;
               }
           },
-          {
-              id: 3,
-              schema: {
-                  fields: [
-                  {
-                      type: 'select',
-                      label: 'During the <b>last 7 days</b>, on how many days did you <b>bicycle</b> for at least 10 minutes at a time to go <b>from place to place?</b>?',
-                      model: 'gardenModerateDays',
-                      values: function() {
-                          return [
-                              {id:0, name:'No moderate activity in garden or yard'},
-                              {id:1, name: '1 day'},
-                              {id:2, name: '2 days'},
-                              {id:3, name: '3 days'},
-                              {id:4, name: '4 days'},
-                              {id:5, name: '5 days'},
-                              {id:6, name: '6 days'},
-                              {id:7, name: '7 days'}
-  
-                          ]
-                      },               
-                      required: true,
-                  }
-                  ]
-            }, 
+      {
+        id: 2,
+        schema: {
+            
+            fields: [
+                {                                            
+                    label: 'During the last 7 days, how much time did you usually spend <b>sitting</b> on a <b>weekend day</b>?',
+                                                                
+                },
+                
+            ],
+
+            groups: [{
+                legend: "",
+                styleClasses: "col-md-10",
+                fields: [{
+                            type: "input",
+                            inputType:"number",                    
+                            label: 'Hours ',
+                            model: 'sittingWeekenddayTimeHours',
+                            styleClasses: "col-md-3",
+                            hint: "0-16",
+                            max:16,
+                            min:0,
+                            value:0,
+                            placeholder:"0",
+                            validator:['number', 'integer']
+                    },
+                    {
+                        type: "input",
+                        inputType:"number",
+                        label: 'Minutes per day',
+                        model: 'sittingWeekenddayTimeMinutes',
+                        styleClasses: "col-md-3",
+                        hint: "0-60",
+                        max:60,
+                        min:0,
+                        value:0,
+                        placeholder:"0",
+                        validator:['number', 'integer']
+                    }
+                ]
+            },
+            ]
+        },
             showif: function(model){
-              return true;
+                return true;
             }
-          },
-          {
-              id: 4,
-              schema: {
-                  
-                  fields: [
-                      {                                            
-                          label: 'How much time did you usually spend on one of those days <b>bicycle</b> from place to place?',
-                                                                      
-                      },
-                      
-                  ],
-  
-                  groups: [{
-                      legend: "",
-                      styleClasses: "col-md-10",
-                      fields: [{
-                                  type: "input",
-                                  inputType:"number",                    
-                                  label: 'Hours ',
-                                  model: 'transBicycleTimeHours',
-                                  styleClasses: "col-md-3",
-                                  hint: "0-16",
-                                  max:16,
-                                  min:0,
-                                  value:0,
-                                  placeholder:"0",
-                                  validator:['number', 'integer']
-                          },
-                          {
-                              type: "input",
-                              inputType:"number",
-                              label: 'Minutes per day',
-                              model: 'transBicycleTimeMinutes',
-                              styleClasses: "col-md-3",
-                              hint: "0-60",
-                              max:60,
-                              min:0,
-                              value:0,
-                              placeholder:"0",
-                              validator:['number', 'integer']
-                          }
-                      ]
-                  },
-                  ]
-              },
-                  showif: function(model){
-                      console.log(model);
-                      return model.transBicycleDays != 0;
-                  }
-          },         
-          {
-              id: 5,
-              schema: {
-                  fields: [
-                  {
-                      type: 'select',
-                      label: 'During the <b>last 7 days</b>, on how many days did you <b>walk</b> for at least 10 minutes at a time <b>as part of your work</b>? Please do not count any walking you did to travel to or from work.',
-                      model: 'transWalkingDays',
-                      values: function() {
-                          return [
-                              {id:0, name:'No walking from place to place'},
-                              {id:1, name:'1 day'},
-                              {id:2, name:'2 days'},
-                              {id:3, name: '3 days'},
-                              {id:4, name: '4 days'},
-                              {id:5, name: '5 days'},
-                              {id:6, name: '6 days'},
-                              {id:7, name: '7 days'}
-  
-                          ]
-                      },               
-                      required: true,
-                  }
-                  ]
-            }, 
-            showif: function(model){
-              return true;
-            }
-          },
-          {
-              id: 6,
-              schema: {
-                  
-                  fields: [
-                      {                                            
-                          label: 'How much time did you usually spend on one of those days <b>walking</b> from place to place?',
-                                                                      
-                      },
-                      
-                  ],
-  
-                  groups: [{
-                      legend: "",
-                      styleClasses: "col-md-10",
-                      fields: [{
-                                  type: "input",
-                                  inputType:"number",                    
-                                  label: 'Hours ',
-                                  model: 'transWalkingTimeHours',
-                                  styleClasses: "col-md-3",
-                                  hint: "0-16",
-                                  max:16,
-                                  min:0,
-                                  value:0,
-                                  placeholder:"0",
-                                  validator:['number', 'integer']
-                          },
-                          {
-                              type: "input",
-                              inputType:"number",
-                              label: 'Minutes per day',
-                              model: 'transWalkingTimeMinutes',
-                              styleClasses: "col-md-3",
-                              hint: "0-60",
-                              max:60,
-                              min:0,
-                              value:0,
-                              placeholder:"0",
-                              validator:['number', 'integer']
-                          }
-                      ]
-                  },
-                  ]
-              },
-                  showif: function(model){
-                      console.log(model);
-                      return model.transWalkingDays != 0;
-                  }
-          },                    
-  
-          ]
-        }
+    }
+    ]
+}
+         
+
 ];
 
 const parts:any = [

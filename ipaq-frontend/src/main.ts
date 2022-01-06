@@ -12,7 +12,35 @@ Vue.use(BootstrapVue)
 // Import Vue form generator
 import VueFormGenerator from "vue-form-generator";
 import "vue-form-generator/dist/vfg.css";  // optional full css additions
-Vue.use(VueFormGenerator);
+Vue.use(VueFormGenerator, {
+    validators: {
+      MinutesValidator: (value, field, model) => {
+          console.log('VALIDATOR');
+            console.log(value);
+            console.log(field);
+            console.log(model);
+
+            const modelname =  field.model;
+            const modelMinutesName = modelname.replace('Minutes', 'Hours');
+
+            if( value == 0 && model[modelMinutesName] == 0){
+              return ['Minutes and Hours can not both be zero if you did this activity'];
+            } else{
+              return [];
+            }
+
+        
+
+           
+        },
+        secondCustomValidator: (value, field, model) => {
+            return [];
+        },
+        alwaysInvalid: (value, field, model) => {
+            return ['I am always invalid'];
+        }
+    }
+});
 Vue.use(IconsPlugin);
 
 // Import Vue bootstrap datetimepicker

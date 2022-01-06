@@ -13,7 +13,7 @@
     <b-col sm="auto" align-self="end" >
       <!-- HELP :p krijg em nie links -->
       <b-button align-self="start" align-h="start" v-if="submit" id="change-btn" variant="outline-secondary" size="lg" v-on:click="ChangeBtnClicked" >Change</b-button>
-      <b-button v-if="!submit" id="next-btn" variant="outline-primary" size="lg" v-on:click="NextBtnClicked"  v-on:keyup.enter="NextBtnClicked">Next</b-button>
+      <b-button v-if="!submit" id="next-btn" variant="outline-primary" size="lg" v-on:click="NextBtnClicked">Next</b-button>
       <b-button v-if="submit" id="submit-btn" variant="outline-primary" size="lg" v-on:click="SubmitBtnClicked" >Submit</b-button>
     </b-col>   
   </b-row>
@@ -83,13 +83,15 @@ export default class Questionnaire extends Vue {
   
 
   SubmitBtnClicked(){
-    this.$router.push({name:'IPAQ Result', params: {answers:this.pages[0].model}});
+
+  this.$router.push({name:'Short IPAQ Result', params: {answers:this.pages[0].model}});
 
   }
 
   ChangeBtnClicked(){
     alert("Change answers MOCK");
   }
+  
 }
 </script>
 

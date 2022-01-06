@@ -3,7 +3,8 @@ import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
 import Questionnaire from '../views/Questionnaire.vue'
 import QuestionnaireLong from '../views/QuestionnaireLong.vue'
-import QuestionnaireResult from '../views/QuestionnaireResult.vue'
+import QuestionnaireResultShort from '../views/QuestionnaireResultShort.vue'
+import QuestionnaireResultLong from '../views/QuestionnaireResultLong.vue'
 import FAQ from  '../views/FAQ.vue'
 
 let result:any;
@@ -26,12 +27,20 @@ const routes: Array<RouteConfig> = [
     component: QuestionnaireLong,
   },
   {
-    path: "/Qresult",
-    name: "IPAQ Result", 
+    path: "/shortQresult",
+    name: "Short IPAQ Result", 
     props: route => {
       return route.params //  '[object Object]'
    },
-    component: QuestionnaireResult,
+    component: QuestionnaireResultShort,
+  },
+  {
+    path: "/longQresult",
+    name: "Long IPAQ Result", 
+    props: route => {
+      return route.params //  '[object Object]'
+   },
+    component: QuestionnaireResultLong,
   },
   {
     path: "/FAQ",
