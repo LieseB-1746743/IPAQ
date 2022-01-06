@@ -6,14 +6,14 @@
       :options="formOptions" 
       @validated="onValidated">
     </vue-form-generator>
-    <b-button v-if="userCanContinue" variant="primary">Continue</b-button>
+    <b-button v-if="userCanContinue" variant="primary" v-on:click="onSubmit">Continue</b-button>
     <b-button v-else variant="primary" disabled>Continue</b-button>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import VueFormGenerator from "vue-form-generator";
+import $ from "jquery";
 
 @Component({
   components: {},
@@ -111,5 +111,11 @@ export default class Home extends Vue {
     this.validInput = isValid;
   }
 
+  private onSubmit(){
+    if (this.model["age"] > 65) {
+      $("#app").attr('style', 'font-size: 200% !important');
+      $(".form-control").attr('style', 'font-size: 110% !important');
+    }
+  }
 }
 </script>
