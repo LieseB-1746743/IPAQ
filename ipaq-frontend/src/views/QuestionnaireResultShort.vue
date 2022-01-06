@@ -1,17 +1,23 @@
 <template>
 <div>
   <p>Thank you for filling in this survey.</p>
+   <b-button v-if="!showResults" variant="outline-primary" size="medium" v-on:click="showResultsClicked">Show my results</b-button>
+     <b-button v-if="showResults" variant="outline-primary" size="medium" v-on:click="HideResultsClicked">Hide my results</b-button>
+
+   <ResultOverview v-show="showResults" :results="this.results" :IPAQlong="false" />
 </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import router from '../router';
+import ResultOverview from "../components/ResultOverview/ResultOverview.vue";
 import axios from 'axios';
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 @Component({
   components: {
+    ResultOverview
   },
 })
 
@@ -21,8 +27,12 @@ export default class QuestionnaireResultShort extends Vue {
   private answersModel:any;
   private answersBody:any;
   private results:any = {};
+  private showResults = false;
 
   // Methods -------------------------------------------------------
+
+  showResultsClicked(){this.showResults=true;}
+  hideHideResultsClicked(){this.showResults=false;}
 
   handleAnswersToRightBackendScoringFormat(answersInModel){
     let answ = answersInModel.answers;

@@ -50,14 +50,6 @@ const routes: Array<RouteConfig> = [
     component: QuestionnaireResultLong,
   },
   {
-    path: "/QresultOverview",
-    name: "IPAQ Result overview", 
-    props: route => {
-      return route.params //  '[object Object]'
-   },
-    component:  QuestionnaireResultOverview,
-  },
-  {
     path: "/FAQ",
     name: "IPAQ - FAQ",
     component: FAQ,
