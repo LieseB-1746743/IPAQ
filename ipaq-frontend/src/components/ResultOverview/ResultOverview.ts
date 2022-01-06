@@ -8,6 +8,7 @@ export default class ResultOverview extends Vue {
 
     @Prop({required: true}) results: any; // Contains the IPAQ results
     @Prop({required: true}) IPAQlong: boolean; // Contains the IPAQ results
+
     
 
     // DATA -------------------------------------------------------------------------------------------

@@ -2,8 +2,7 @@
 <div>
   <p>Thank you for filling in this survey.</p>
    <b-button v-if="!showResults" variant="outline-primary" size="medium" v-on:click="showResultsClicked">Show my results</b-button>
-     <b-button v-if="showResults" variant="outline-primary" size="medium" v-on:click="HideResultsClicked">Hide my results</b-button>
-
+   <b-button v-if="showResults" variant="outline-secondary" size="medium" v-on:click="hideResultsClicked">Hide my results</b-button>
    <ResultOverview v-show="showResults" :results="this.results" :IPAQlong="false" />
 </div>
 </template>
@@ -32,7 +31,7 @@ export default class QuestionnaireResultShort extends Vue {
   // Methods -------------------------------------------------------
 
   showResultsClicked(){this.showResults=true;}
-  hideHideResultsClicked(){this.showResults=false;}
+  hideResultsClicked(){this.showResults=false;}
 
   handleAnswersToRightBackendScoringFormat(answersInModel){
     let answ = answersInModel.answers;
