@@ -1,24 +1,68 @@
 <template>
-<div>
-  <!---<FormGroup v-for="page in pages" :key="page.pageID" :schemas="page.schemas" :model="page.model" />-->
-  <div v-if="!submit" >
-    <FormGroup  :schemas="currentPage.schemas" :model="pages[0].model" :part="currentPart" :validatedfunct="onValidated" :imageSource="imagesWithPageAsIndex[currentpageIndex]"/>
+  <div>
+    <!---<FormGroup v-for="page in pages" :key="page.pageID" :schemas="page.schemas" :model="page.model" />-->
+    <div v-if="!submit">
+      <FormGroup
+        :schemas="currentPage.schemas"
+        :model="pages[0].model"
+        :part="currentPart"
+        :validatedfunct="onValidated"
+        :imageSource="imagesWithPageAsIndex[currentpageIndex]"
+      />
+    </div>
+    <div v-if="submit">
+      <h1>Answers</h1>
+      <AnswerOverview
+        v-for="page in pages"
+        :key="page.pageID"
+        :schemas="page.schemas"
+        :model="pages[0].model"
+        :parts="parts"
+        :partID="page.pageID"
+      />
+    </div>
+
+    <b-row align-v="end" align-h="end">
+      <b-col sm="auto" align-self="end">
+        <!-- HELP :p krijg em nie links -->
+        <b-button
+          align-self="start"
+          align-h="start"
+          v-if="submit"
+          id="change-btn"
+          variant="outline-secondary"
+          size="lg"
+          v-on:click="ChangeBtnClicked"
+          >Change</b-button
+        >
+        <b-button
+          v-if="!submit && pageIsValidated"
+          id="next-btn"
+          variant="outline-primary"
+          size="lg"
+          v-on:click="NextBtnClicked"
+          >Next</b-button
+        >
+        <b-button
+          v-if="!submit && !pageIsValidated"
+          id="next-btn"
+          variant="outline-secondary"
+          size="lg"
+          v-on:click="NextBtnClicked"
+          disabled
+          >Next</b-button
+        >
+        <b-button
+          v-if="submit"
+          id="submit-btn"
+          variant="outline-primary"
+          size="lg"
+          v-on:click="SubmitBtnClicked"
+          >Submit</b-button
+        >
+      </b-col>
+    </b-row>
   </div>
-  <div v-if="submit" >
-    <h1>Answers</h1>
-    <AnswerOverview  v-for="page in pages" :key="page.pageID" :schemas="page.schemas" :model="pages[0].model" :parts="parts" :partID="page.pageID" />
-  </div>
-   
-  <b-row align-v="end" align-h="end">
-    <b-col sm="auto" align-self="end" >
-      <!-- HELP :p krijg em nie links -->
-      <b-button align-self="start" align-h="start" v-if="submit" id="change-btn" variant="outline-secondary" size="lg" v-on:click="ChangeBtnClicked" >Change</b-button>
-      <b-button v-if="!submit && pageIsValidated " id="next-btn" variant="outline-primary" size="lg" v-on:click="NextBtnClicked">Next</b-button>
-      <b-button v-if="!submit && !pageIsValidated " id="next-btn" variant="outline-secondary" size="lg" v-on:click="NextBtnClicked" disabled>Next</b-button>
-      <b-button v-if="submit" id="submit-btn" variant="outline-primary" size="lg" v-on:click="SubmitBtnClicked" >Submit</b-button>
-    </b-col>   
-  </b-row>
-</div>
 </template>
 
 <script lang="ts">
@@ -30,21 +74,19 @@ import IPAQ_short from "../utils/IPAQ_English_self-admin_short";
 @Component({
   components: {
     FormGroup,
-    AnswerOverview
+    AnswerOverview,
   },
 })
-
-
 export default class Questionnaire extends Vue {
   // Data ----------------------------------------------------------
   private pages = IPAQ_short.pages;
   private parts = IPAQ_short.parts;
   private currentPage = IPAQ_short.pages[0];
-  private currentPart =  IPAQ_short.parts[0];
+  private currentPart = IPAQ_short.parts[0];
   private currentpageIndex = 0;
   private submit = false;
   private pageIsValidated = true;
-  private imagesWithPageAsIndex = ["","","walking.jpg","sitting.png",""]
+  private imagesWithPageAsIndex = ["", "", "walking.jpg", "sitting.png", ""];
 
   // Computed properties -------------------------------------------
 
@@ -52,61 +94,57 @@ export default class Questionnaire extends Vue {
 
   // is called whenever the form does validation
   onValidated(isValid, errors) {
-   console.log("Validation result: ", isValid, ", Errors:", errors);
-   this.pageIsValidated = isValid;
+    console.log("Validation result: ", isValid, ", Errors:", errors);
+    this.pageIsValidated = isValid;
   }
-  NextBtnClicked(){
+  NextBtnClicked() {
     console.log("CLICK nxt Btn");
 
     // Only proceed when form is valid
-    if(!this.pageIsValidated){
+    if (!this.pageIsValidated) {
       alert("Form is not valid! Please correct the invalid answers.");
       return;
     }
-    
-    if(this.currentpageIndex< Object.keys(this.pages).length){
-         this.currentpageIndex+=1;
 
-         if(this.currentpageIndex>=Object.keys(this.pages).length){
-            this.submit = true;
-         }
+    if (this.currentpageIndex < Object.keys(this.pages).length) {
+      this.currentpageIndex += 1;
+
+      if (this.currentpageIndex >= Object.keys(this.pages).length) {
+        this.submit = true;
+      }
     }
 
-    this.currentPage=this.pages[this.currentpageIndex];
-    this.currentPart=this.parts[this.currentpageIndex];
+    this.currentPage = this.pages[this.currentpageIndex];
+    this.currentPart = this.parts[this.currentpageIndex];
     console.log("CurrentIndex");
     console.log(this.currentpageIndex);
   }
-  
 
-  SubmitBtnClicked(){
-
-  this.$router.push({name:'Short IPAQ Result', params: {answers:this.pages[0].model}});
-
+  SubmitBtnClicked() {
+    this.$router.push({
+      name: "Short IPAQ Result",
+      params: { answers: this.pages[0].model },
+    });
   }
 
-  ChangeBtnClicked(){
+  ChangeBtnClicked() {
     alert("Change answers MOCK");
   }
-  
 }
 </script>
 
 <style scoped>
-  #next-btn {
-      margin-top: 10rem;
-  }
-  #change-btn {
-      margin-right: 2rem;
-  }
+#next-btn {
+  margin-top: 10rem;
+}
+#change-btn {
+  margin-right: 2rem;
+}
 
-  /* to create space between HOURS and MINUTES INPUT => does not work */
-  #hours-per-days{
-    padding-right: 5rem;
-    color: red;
-    background-color: red;
-  }
-  
-  
-  		
+/* to create space between HOURS and MINUTES INPUT => does not work */
+#hours-per-days {
+  padding-right: 5rem;
+  color: red;
+  background-color: red;
+}
 </style>
