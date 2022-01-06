@@ -36,7 +36,7 @@
           >Change</b-button
         >
         <b-button
-          v-if="!submit && pageIsValidated"
+          v-if="!submit && (pageIsValidated && this.pages[0].model.job !=-1) "
           id="next-btn"
           variant="outline-primary"
           size="lg"
@@ -44,7 +44,7 @@
           >Next</b-button
         >
         <b-button
-          v-if="!submit && !pageIsValidated"
+          v-if="!submit &&  (!pageIsValidated || this.pages[0].model.job ==-1)"
           id="next-btn"
           variant="outline-secondary"
           size="lg"
@@ -61,22 +61,7 @@
           >Submit</b-button
         >
       </b-col>
-    </b-row>
-  </div>
-  <div v-if="submit" >
-    <h1> ANSWER OVERVIEW </h1>
-    <AnswerOverview  v-for="page in pages" :key="page.pageID" :schemas="page.schemas" :model="pages[0].model" :parts="parts" :partID="page.pageID" />
-  </div>
-   
-  <b-row align-v="end" align-h="end">
-    <b-col sm="auto" align-self="end" >
-      <!-- HELP :p krijg em nie links -->
-      <b-button align-self="start" align-h="start" v-if="submit" id="change-btn" variant="outline-secondary" size="lg" v-on:click="ChangeBtnClicked" >Change</b-button>
-      <b-button v-if="!submit && (pageIsValidated && this.pages[0].model.job !=-1) " id="next-btn" variant="outline-primary" size="lg" v-on:click="NextBtnClicked">Next</b-button>
-      <b-button v-if="!submit && (!pageIsValidated || this.pages[0].model.job ==-1)" id="next-btn" variant="outline-secondary" size="lg" v-on:click="NextBtnClicked" disabled>Next</b-button>
-      <b-button v-if="submit" id="submit-btn" variant="outline-primary" size="lg" v-on:click="SubmitBtnClicked" >Submit</b-button>
-    </b-col>   
-  </b-row>
+    </b-row>   
 </div>
 </template>
 
