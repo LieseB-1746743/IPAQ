@@ -14,28 +14,30 @@ import VueFormGenerator from "vue-form-generator";
 import "vue-form-generator/dist/vfg.css";  // optional full css additions
 Vue.use(VueFormGenerator, {
     validators: {
-      MinutesValidator: (value, field, model) => {
-          console.log('VALIDATOR');
-            console.log(value);
-            console.log(field);
-            console.log(model);
-
+      MinutesValidator: (value, field, model) => {      
             const modelname =  field.model;
-            const modelMinutesName = modelname.replace('Minutes', 'Hours');
+            const modelHoursName = modelname.replace('Minutes', 'Hours');
 
-            if( value == 0 && model[modelMinutesName] == 0){
+            if( value == 0 && model[modelHoursName] == 0){
               return ['Minutes and Hours can not both be zero if you did this activity'];
             } else{
               return [];
-            }
-
-        
+            }      
 
            
         },
-        secondCustomValidator: (value, field, model) => {
+        HoursValidator: (value, field, model) => {     // NOT USED  
+          const modelname =  field.model;
+          const modelMinutesName = modelname.replace('Hours', 'Minutes');
+
+          if( value == 0 && model[modelMinutesName] == 0){
+            return ['Minutes and Hours can not both be zero if you did this activity'];
+          } else{
             return [];
-        },
+          }      
+
+         
+      },
         alwaysInvalid: (value, field, model) => {
             return ['I am always invalid'];
         }
