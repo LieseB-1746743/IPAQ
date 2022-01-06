@@ -1,8 +1,6 @@
 <template>
 <div>
   <p>Thank you for filling in this survey.</p>
-  <!--<h1> IPAQ RESULTS </h1>
-  {{results}}-->
 </div>
 </template>
 
