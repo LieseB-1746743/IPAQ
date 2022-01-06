@@ -8,12 +8,16 @@
       <router-link to="/about">About</router-link> |
     </div>
     <router-view />
+    <Chatbot/>
   </b-container>
 </template>
 
 
 <script lang="ts">
 import Vue from "vue";
+import Chatbot from "../src/components/Chatbot.vue";
+
+Vue.component("Chatbot",Chatbot);
 
 export default class App extends Vue {
 }
@@ -21,6 +25,7 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss">
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

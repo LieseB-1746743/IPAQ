@@ -1,8 +1,10 @@
 <template>
     <div class="panel-body">
-        <h2> {{part.ipaqPartTitle}} </h2>
-        <img :src="getImgUrl(imageSource)" height="80rem" width="80rem" v-if="imageSource!=''"/> 
-        <p> {{part.ipaqPartAnnotation}} </p>
+        <div>
+            <img id="activityTypeImg" :src="getImgUrl(imageSource)" v-if="imageSource!=''"/> 
+            <h2> {{part.ipaqPartTitle}} </h2>
+            <p> {{part.ipaqPartAnnotation}} </p>
+        </div>
         <h4> Questions </h4>
         <vue-form-generator 
             v-for="item in filteredSchemas"
@@ -17,3 +19,16 @@
 
 <script lang="ts" src="./FormGroup.ts">
 </script>
+
+<style scoped>
+    #activityTypeImg {
+        float: right;
+        width: 100px;
+        height: auto;
+    }
+    @media only screen and (min-width: 500px) {
+        #activityTypeImg {
+            width: 150px;
+        }
+    }
+</style>

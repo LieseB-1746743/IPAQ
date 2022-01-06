@@ -1,23 +1,18 @@
 <template>
 <div>
- <h1> IPAQ ANSWERS </h1>
- {{answersModel}}
- <h1> IPAQ RESULTS </h1>
- {{results}}
- <Chatbot/>
+  <p>Thank you for filling in this survey.</p>
+  <!--<h1> IPAQ RESULTS </h1>
+  {{results}}-->
 </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Chatbot from "../components/Chatbot.vue";
-import router from '../router';
 import axios from 'axios';
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 @Component({
   components: {
-    Chatbot
   },
 })
 
