@@ -12,7 +12,7 @@
     <li> Use the <b>tab button</b> to navigate faster through the questions </li>
     <li> Use the <b>ENTER button</b> to navigate faster through the pages (To prevent skipping questions -> first use tab to highlight next-btn)</li>
     <br/>
-    <h5>Different sorts of activitiets </h5>
+    <h5>Different sorts of activities </h5>
     <img src="../assets/vigorousVSmoderate2.jpg" height="500rem" width="500rem"/> 
     <img src="../assets/moderateVSvigorous.png" height="500rem" width="500rem"/> 
         
