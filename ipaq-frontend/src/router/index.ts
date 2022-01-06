@@ -2,9 +2,11 @@ import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
 import Questionnaire from '../views/Questionnaire.vue'
+import QuestionnaireElderly from '../views/QuestionnaireElderly.vue'
 import QuestionnaireLong from '../views/QuestionnaireLong.vue'
 import QuestionnaireResultShort from '../views/QuestionnaireResultShort.vue'
 import QuestionnaireResultLong from '../views/QuestionnaireResultLong.vue'
+import QuestionnaireResultOverview from  '../views/QuestionnaireResultOverview.vue'
 import FAQ from  '../views/FAQ.vue'
 
 let result:any;
@@ -17,13 +19,18 @@ const routes: Array<RouteConfig> = [
     component: Home,
   },
   {
-    path: "/Q",
-    name: "IPAQ Questionaire",
+    path: "/Qshort",
+    name: "IPAQ Questionaire Short",
     component: Questionnaire,
   },
   {
+    path: "/Qelderly",
+    name: "IPAQ Questionaire Elderly",
+    component: QuestionnaireElderly,
+  },
+  {
     path: "/Qlong",
-    name: "IPAQ Questionaire",
+    name: "IPAQ Questionaire Long",
     component: QuestionnaireLong,
   },
   {
@@ -41,6 +48,14 @@ const routes: Array<RouteConfig> = [
       return route.params //  '[object Object]'
    },
     component: QuestionnaireResultLong,
+  },
+  {
+    path: "/QresultOverview",
+    name: "IPAQ Result overview", 
+    props: route => {
+      return route.params //  '[object Object]'
+   },
+    component:  QuestionnaireResultOverview,
   },
   {
     path: "/FAQ",
