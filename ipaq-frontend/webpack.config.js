@@ -1,12 +1,12 @@
 // webpack.config.js
 module.exports = {
-plugins: [
+  plugins: [
     new webpack.ProvidePlugin({
-      Vue: ['vue/dist/vue.esm.js', 'default'],
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery',
-      $: 'jquery',
-      moment: 'moment',
+      Vue: ["vue/dist/vue.esm.js", "default"],
+      jQuery: "jquery",
+      "window.jQuery": "jquery",
+      $: "jquery",
+      moment: "moment",
     }),
-  ] 
-}
+  ],
+};

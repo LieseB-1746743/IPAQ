@@ -1,13 +1,13 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
-import Questionnaire from '../views/Questionnaire.vue'
-import QuestionnaireLong from '../views/QuestionnaireLong.vue'
-import QuestionnaireResultShort from '../views/QuestionnaireResultShort.vue'
-import QuestionnaireResultLong from '../views/QuestionnaireResultLong.vue'
-import FAQ from  '../views/FAQ.vue'
+import Questionnaire from "../views/Questionnaire.vue";
+import QuestionnaireLong from "../views/QuestionnaireLong.vue";
+import QuestionnaireResultShort from "../views/QuestionnaireResultShort.vue";
+import QuestionnaireResultLong from "../views/QuestionnaireResultLong.vue";
+import FAQ from "../views/FAQ.vue";
 
-let result:any;
+let result: any;
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -28,18 +28,18 @@ const routes: Array<RouteConfig> = [
   },
   {
     path: "/shortQresult",
-    name: "Short IPAQ Result", 
-    props: route => {
-      return route.params //  '[object Object]'
-   },
+    name: "Short IPAQ Result",
+    props: (route) => {
+      return route.params; //  '[object Object]'
+    },
     component: QuestionnaireResultShort,
   },
   {
     path: "/longQresult",
-    name: "Long IPAQ Result", 
-    props: route => {
-      return route.params //  '[object Object]'
-   },
+    name: "Long IPAQ Result",
+    props: (route) => {
+      return route.params; //  '[object Object]'
+    },
     component: QuestionnaireResultLong,
   },
   {
