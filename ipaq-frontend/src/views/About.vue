@@ -1,10 +1,11 @@
 <template>
+
   <div class="about">
     <h2>This is an about page</h2>
     <br/>
     <p> This is an online <b>IPAQ questionaire tool</b> developed by the University of Hasselt (Belgium).</p> <br/> 
     <h2> Our GDPR policy </h2> <!-- https://gdpr.eu/privacy-notice/ -->
-  <br>
+    <br>
 
     <ol style="color: rgb(70, 72, 85); font-family: Helvetica, Arial, sans-serif; font-size: 18px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">
     <li>
@@ -15,6 +16,7 @@
             <li style="box-sizing: border-box; line-height: 24px;">[Add any other data your company collects]</li>
         </ul>
     </li>
+
     <li>
         <h3 style='box-sizing: border-box; margin: 0px 0px 2rem; font-family: "Open Sans", Arial, Helvetica, sans-serif; font-weight: 700; line-height: 1.2; color: rgb(0, 0, 0); font-size: 2rem; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>How do we collect your data?</h3>
         <p style='box-sizing: border-box; margin: 0px 0px 2rem; color: rgb(0, 0, 0); font-family: "Open Sans", Arial, Helvetica, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>You directly provide Our Company with most of the data we collect. We collect data and process data when you:</p>
@@ -25,6 +27,7 @@
             <li style="box-sizing: border-box; line-height: 24px;">[Add any other ways your company collects data]</li>
         </ul>
     </li>
+
     <li>
         <p style='box-sizing: border-box; margin: 0px 0px 2rem; color: rgb(0, 0, 0); font-family: "Open Sans", Arial, Helvetica, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>Our Company may also receive your data indirectly from the following sources:</p>
         <ul style='box-sizing: border-box; margin-top: 0px; margin-bottom: 2rem; color: rgb(0, 0, 0); font-family: "Open Sans", Arial, Helvetica, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>
@@ -40,6 +43,7 @@
             <li style="box-sizing: border-box; line-height: 24px;">[Add how else your company uses data]</li>
         </ul>
     </li>
+
     <li>
         <p style='box-sizing: border-box; margin: 0px 0px 2rem; color: rgb(0, 0, 0); font-family: "Open Sans", Arial, Helvetica, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>If you agree, Our Company will share your data with our partner companies so that they may offer you their products and services.</p>
         <ul style='box-sizing: border-box; margin-top: 0px; margin-bottom: 2rem; color: rgb(0, 0, 0); font-family: "Open Sans", Arial, Helvetica, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>
@@ -82,7 +86,9 @@
             <li style="box-sizing: border-box; line-height: 24px;">Understanding how you use our website</li>
             <li style="box-sizing: border-box; line-height: 24px;">[Add any uses your company has for cookies]</li>
         </ul>
+        
     </li>
+
     <li>
         <h3 style='box-sizing: border-box; margin: 0px 0px 2rem; font-family: "Open Sans", Arial, Helvetica, sans-serif; font-weight: 700; line-height: 1.2; color: rgb(0, 0, 0); font-size: 2rem; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>What types of cookies do we use?</h3>
         <p style='box-sizing: border-box; margin: 0px 0px 2rem; color: rgb(0, 0, 0); font-family: "Open Sans", Arial, Helvetica, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>There are a number of different types of cookies, however, our website uses:</p>
@@ -105,6 +111,6 @@
         <p style='box-sizing: border-box; margin: 0px 0px 2rem; color: rgb(0, 0, 0); font-family: "Open Sans", Arial, Helvetica, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>Call us:</p>
     </li>
 </ol>
-  </div>
+</div>
   
 </template>

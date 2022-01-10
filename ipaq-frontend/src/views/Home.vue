@@ -113,8 +113,11 @@ export default class Home extends Vue {
 
   private onSubmit(){
     if (this.model["age"] > 65) {
-      $("#app").attr('style', 'font-size: 200% !important');
-      $(".form-control").attr('style', 'font-size: 110% !important');
+     // $("#app").attr('style', 'font-size: 200% !important');
+      //$(".form-control").attr('style', 'font-size: 110% !important');
+      $("#app").attr('style', 'zoom: 130%');
+      $(".form-control").attr('style', 'zoom: 130%');
+      
     }
   }
 }
