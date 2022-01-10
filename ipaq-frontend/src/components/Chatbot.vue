@@ -4,7 +4,7 @@
             style="border: none;"
             height="300rem"
            
-            src="https://widget.kommunicate.io/chat?appId=1b03d30d01a20936b285e65478a040d2"
+            src="https://widget.kommunicate.io/chat?appId="2229388cf861c0d4513b38efd51342561"
             allow="microphone; geolocation;"
         
 </iframe> -->
@@ -23,7 +23,7 @@ export default class Chatbot extends Vue {
     try {
       (function (d, m) {
         var kommunicateSettings = {
-          appId: "1b03d30d01a20936b285e65478a040d2",
+          appId: "2229388cf861c0d4513b38efd51342561",
           popupWidget: true,
           automaticChatOpenOnNavigation: true,
         };
