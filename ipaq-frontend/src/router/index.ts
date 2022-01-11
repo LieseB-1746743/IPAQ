@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
+import Redirect from "../views/Redirect.vue";
 import Questionnaire from '../views/Questionnaire.vue'
 import QuestionnaireElderly from '../views/QuestionnaireElderly.vue'
 import QuestionnaireLong from '../views/QuestionnaireLong.vue'
@@ -17,6 +18,11 @@ const routes: Array<RouteConfig> = [
     path: "/",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/R",
+    name: "Redirect",
+    component: Redirect,
   },
   {
     path: "/Qshort",

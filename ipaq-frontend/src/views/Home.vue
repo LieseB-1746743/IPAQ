@@ -1,7 +1,9 @@
 <template>
   <div class="home">
     <vue-form-generator 
-      :schema="schema"
+      v-for="schema in filteredSchemas"
+      :key="schema.id"
+      :schema="schema.schema"
       :model="model"
       :options="formOptions" 
       @validated="onValidated">
@@ -15,10 +17,21 @@
 import { Component, Vue } from "vue-property-decorator";
 import $ from "jquery";
 
+import LoginState from "../store/modules/types";
+import store from '../store/index';
+// import router from "../router";
+
+
 @Component({
   components: {},
 })
 export default class Home extends Vue {
+
+  // COMPUTED PROPERTIES ----------------------------------------------------------------------------
+  get filteredSchemas() {
+    return this.schemas.filter((schema) => schema.showif(this.model));
+  }
+  
   // DATA ----------------------------------------------------------
   private validInput = false;
 
@@ -27,60 +40,95 @@ export default class Home extends Vue {
     validateAfterChanged: true
   };
 
-  private model = {};
-
-  private schema = {
-    fields: [
-      {
-        type: "input",
-        inputType: "text",
-        label: "First name",
-        model: "first_name",
-        required: true,
-      },
-      {
-        type: "input",
-        inputType: "text",
-        label: "Last name",
-        model: "last_name",
-        required: true,
-      },
-      {
-        type: "input",
-        inputType: "number",
-        label: "Age",
-        model: "age",
-        min: 0,
-        max: 130,
-        required: true,
-        validator: ["number"]
-      },
-      {
-        type: "radios",
-        label: "Gender",
-        model: "gender",
-        values: ["M","F","X"],
-        required: true,
-      },
-      {
-        type: "input",
-        inputType: "email",
-        label: "Email",
-        model: "email",
-        required: true,
-        validator: ['email']
-      },
-      {
-        type: "input",
-        inputType: "tel",
-        pattern: /^\+?\d[\d ]{2,}$/,
-        label: "Tel",
-        model: "tel",
-        required: true,
-        validator: ["regexp"]
-      }
-    ]
+  private model = {
+    formtype: "long"
   };
+
+  private schemas = [
+    {
+      id: 1,
+      schema: {
+        fields: [
+        {
+          type: "input",
+          inputType: "text",
+          label: "First name",
+          model: "first_name",
+          required: true,
+        },
+        {
+          type: "input",
+          inputType: "text",
+          label: "Last name",
+          model: "last_name",
+          required: true,
+        },
+        {
+          type: "input",
+          inputType: "number",
+          label: "Age",
+          model: "age",
+          min: 0,
+          max: 130,
+          required: true,
+          validator: ["number"]
+        },
+        {
+          type: "radios",
+          label: "Gender",
+          model: "gender",
+          values: ["M","F","X"],
+          required: true,
+        },
+        {
+          type: "input",
+          inputType: "email",
+          label: "Email",
+          model: "email",
+          required: true,
+          validator: ['email']
+        },
+        {
+          type: "input",
+          inputType: "tel",
+          pattern: /^\+?\d[\d ]{2,}$/,
+          label: "Tel",
+          model: "tel",
+          required: true,
+          validator: ["regexp"]
+        },
+        ]
+      }, 
+      showif(){ return true;}
+      },
+   { 
+      id:2,
+      showif: function(model){
+        console.log("IN SHOWIF");
+        console.log(model);
+        if (model.age !== undefined){
+          return model.age < 70;
+        }
+        return false;
+      },
+      schema:{
+        fields: [
+        
+          {
+            type: "radios",
+            label: "Choose form type:",
+            model: "formtype",
+            required: true,
+            value:'long',
+            values: [
+              {name: "Long form", value: "long"},
+              {name: "Short form", value: "short"}
+            ]
+          }
+        ]
+      }
+    }
+  ];
 
 
   // COMPUTED PROPERTIES -------------------------------------------
@@ -119,6 +167,25 @@ export default class Home extends Vue {
       $(".form-control").attr('style', 'zoom: 130%');
       
     }
+    // FILL STORE
+    let user: LoginState = {
+      first_name: this.model["first_name"],
+      last_name: this.model["last_name"],
+      age: this.model["age"],
+      email: this.model["email"],
+      tel: this.model["tel"],
+      gender: this.model["gender"],
+      formtype:this.model['formtype']
+    };
+    
+    store.commit('app/setUser', user);
+    this.redirectToQuestionnaire(user);
+
+  }
+
+  private redirectToQuestionnaire(user: LoginState) {
+    this.$router.push({name: "Redirect"});
   }
 }
+
 </script>

@@ -1,3 +1,4 @@
+import LoginState from '@/store/modules/types';
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 
@@ -8,6 +9,7 @@ export default class ResultOverview extends Vue {
 
     @Prop({required: true}) results: any; // Contains the IPAQ results
     @Prop({required: true}) IPAQlong: boolean; // Contains the IPAQ results
+    @Prop({required: true}) user: LoginState; // Contains the IPAQ results
 
     
 

@@ -43,4 +43,8 @@ export default class App extends Vue {}
     }
   }
 }
+
+.questionnaire_next_btn {
+ margin-bottom: 20px;
+}
 </style>

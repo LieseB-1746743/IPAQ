@@ -3,7 +3,7 @@
   <p>Thank you for filling in this survey.</p>
    <b-button v-if="!showResults" variant="outline-primary" size="medium" v-on:click="showResultsClicked">Show my results</b-button>
    <b-button v-if="showResults" variant="outline-secondary" size="medium" v-on:click="hideResultsClicked">Hide my results</b-button>
-   <ResultOverview v-show="showResults" :results="this.results" :IPAQlong="false" />
+   <ResultOverview v-show="showResults" :results="this.results" :IPAQlong="false" :user="this.user" />
 </div>
 </template>
 
@@ -12,6 +12,8 @@ import { Component, Vue } from "vue-property-decorator";
 import ResultOverview from "../components/ResultOverview/ResultOverview.vue";
 import axios from 'axios';
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+import LoginState from "../store/modules/types";
+import store from '../store/index';
 
 @Component({
   components: {
@@ -24,6 +26,7 @@ export default class QuestionnaireResultLong extends Vue {
   private answersBody:any;
   private results:any = {};
   private showResults = false;
+  private user:LoginState;
 
   // Methods -------------------------------------------------------
 
@@ -171,6 +174,7 @@ export default class QuestionnaireResultLong extends Vue {
     // Send IPAQ results to backend
     // get IPAQ scores from backend
     await this.getIPAQscores();
+    this.user = store.getters['app/getUser'];
   }
 
   async getIPAQscores() {

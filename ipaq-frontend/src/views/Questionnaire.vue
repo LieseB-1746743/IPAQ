@@ -36,6 +36,7 @@
           >Change</b-button
         >
         <b-button
+          class="questionnaire_next_btn" 
           v-if="!submit && pageIsValidated"
           id="next-btn"
           variant="outline-primary"
@@ -44,6 +45,7 @@
           >Next</b-button
         >
         <b-button
+          class="questionnaire_next_btn" 
           v-if="!submit && !pageIsValidated"
           id="next-btn"
           variant="outline-secondary"
@@ -135,10 +137,15 @@ export default class Questionnaire extends Vue {
 
 <style scoped>
 #next-btn {
-  margin-top: 10rem;
+  margin-top: 0rem;
 }
 #change-btn {
   margin-right: 2rem;
+  margin-bottom: 2rem;
+}
+#submit-btn {
+  margin-right: 2rem;
+  margin-bottom: 2rem;
 }
 
 /* to create space between HOURS and MINUTES INPUT => does not work */
