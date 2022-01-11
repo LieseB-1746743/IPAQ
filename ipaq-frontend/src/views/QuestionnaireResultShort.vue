@@ -1,9 +1,9 @@
 <template>
 <div>
   <p>Thank you for filling in this survey.</p>
-   <b-button v-if="!showResults" variant="outline-primary" size="medium" v-on:click="showResultsClicked">Show my results</b-button>
-   <b-button v-if="showResults" variant="outline-secondary" size="medium" v-on:click="hideResultsClicked">Hide my results</b-button>
-   <ResultOverview v-show="showResults" :results="this.results" :IPAQlong="false" :user="this.user" />
+   <b-button v-if="!showResults" variant="outline-primary" size="medium" v-on:click="showResultsClicked">Show my IPAQ rapport</b-button>
+   <b-button v-if="showResults" variant="outline-secondary" size="medium" v-on:click="hideResultsClicked">Hide my IPAQ rapport</b-button>
+   <ResultOverview v-show="showResults" :results="this.results" :IPAQlong="false" :user="this.user" :formTypeUPPER="this.formTypeUPPER" />
 </div>
 </template>
 
@@ -28,6 +28,7 @@ export default class QuestionnaireResultShort extends Vue {
   private results:any = {};
   private showResults = false;
   private user:LoginState;
+  private formTypeUPPER:string="";
 
   // Methods -------------------------------------------------------
 
@@ -62,6 +63,7 @@ export default class QuestionnaireResultShort extends Vue {
         },
         {
           activity: 3,
+          daysPerWeek: 7,
           hoursPerDay: answ.sittingTimeHours,
           minutesPerDay: answ.sittingTimeMinutes,
         },
@@ -88,6 +90,7 @@ export default class QuestionnaireResultShort extends Vue {
     // get IPAQ scores from backend
     await this.getIPAQscores();
     this.user = store.getters['app/getUser'];
+    this.formTypeUPPER=this.user.formtype.toUpperCase();
   }
 
   async getIPAQscores() {

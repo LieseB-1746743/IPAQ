@@ -141,7 +141,7 @@ class LongSubmission {
                 case 3: // SITTING
                 // not included as part of any summary score of physical activity.
                 this.sittingPerWeek = this.getActivityMinutesPerWeek(ActivityType.SITTING,domainAnswers.answersmodel);
-                this.avgSittingPerDay = this.sittingPerWeek / 7;
+                this.avgSittingPerDay = Math.round( this.sittingPerWeek / 7);
                 break;
                 case 4: // LEISURE
                 walkingMETs[domain]= multiplyfactors[domain][0] * this.getActivityMinutesPerWeek(ActivityType.WALKING,domainAnswers.answersmodel);

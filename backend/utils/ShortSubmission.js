@@ -27,6 +27,9 @@ class ShortSubmission {
         this.vigorousMET = -1;
         this.totalMET = -1
 
+        this.sittingPerWeek = -1;
+        this.avgSittingPerDay =-1;
+
         this.categoricalScore = '';
 
         this.answers = answers; // answers = JSON object
@@ -43,7 +46,11 @@ class ShortSubmission {
             "vigorousMET": this.vigorousMET,
             "totalMET": this.totalMET,
             "daysPerWeekArray":this.daysPerWeekArray,
-            "categoricalScore":this.categoricalScore
+            "categoricalScore":this.categoricalScore,
+            "sittingPerWeek":this.sittingPerWeek,
+            "avgSittingPerDay":this.avgSittingPerDay,
+            "daysOfVigorousActivity20min": this.daysOfVigorousActivity20min,
+            "daysWalking30min":this.daysWalking30min
        
         }
 
@@ -83,6 +90,9 @@ class ShortSubmission {
         this.moderateMET = 4.0 * this.getActivityMinutesPerWeek(ActivityType.MODERATE);
         this.vigorousMET =  8.0 * this.getActivityMinutesPerWeek(ActivityType.VIGOROUS);
         this.totalMET = this.walkingMET + this.moderateMET + this.vigorousMET;
+
+        this.sittingPerWeek = this.getActivityMinutesPerWeek(ActivityType.SITTING);
+        this.avgSittingPerDay = Math.round( this.sittingPerWeek / 7);
 
     }
 

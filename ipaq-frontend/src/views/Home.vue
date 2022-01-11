@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" id="home" >
     <vue-form-generator 
       v-for="schema in filteredSchemas"
       :key="schema.id"
@@ -191,3 +191,10 @@ export default class Home extends Vue {
 }
 
 </script>
+
+
+<style scoped>
+#home{  
+    margin-bottom: 4rem;
+}
+</style>
