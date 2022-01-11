@@ -2,7 +2,7 @@
 <div>
   <!---<FormGroup v-for="page in pages" :key="page.pageID" :schemas="page.schemas" :model="page.model" />-->
   <div v-if="!submit" >
-    <FormGroup  :schemas="currentPage.schemas" :model="pages[0].model" :part="currentPart" :validatedfunct="onValidated" :imageSource="imagesWithPageAsIndex[currentpageIndex]"/>
+    <FormGroup  :schemas="currentPage.schemas" :model="pages[0].model" :part="currentPart" :validatedfunct="onValidated" :imageSource="imagesWithPageAsIndex[currentpageIndex]" :fitbitSource="fitbitWithPageAsIndex[currentpageIndex]"/>
   </div>
   <div v-if="submit" >
     <h1>Answers</h1>
@@ -45,6 +45,7 @@ export default class Questionnaire extends Vue {
   private submit = false;
   private pageIsValidated = true;
   private imagesWithPageAsIndex = ["sitting.png","walking.jpg","","",""]
+  private fitbitWithPageAsIndex = ["", "walkStats","fitbitAct.png", "fitbitAct.png",""];
 
   // Computed properties -------------------------------------------
 

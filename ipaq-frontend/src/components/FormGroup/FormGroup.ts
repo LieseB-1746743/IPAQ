@@ -9,6 +9,7 @@ export default class FormGroup extends Vue {
   @Prop({ required: true }) part: any;
   @Prop({ required: true }) validatedfunct: any;
   @Prop({ required: true }) imageSource: string;
+  @Prop({ required: true }) fitbitSource: string;
 
   //Methods
   getImgUrl(pic) {

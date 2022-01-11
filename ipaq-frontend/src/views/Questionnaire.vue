@@ -8,6 +8,7 @@
         :part="currentPart"
         :validatedfunct="onValidated"
         :imageSource="imagesWithPageAsIndex[currentpageIndex]"
+        :fitbitSource="fitbitWithPageAsIndex[currentpageIndex]"
       />
     </div>
     <div v-if="submit">
@@ -89,6 +90,7 @@ export default class Questionnaire extends Vue {
   private submit = false;
   private pageIsValidated = true;
   private imagesWithPageAsIndex = ["", "", "walking.jpg", "sitting.png", ""];
+  private fitbitWithPageAsIndex = ["fitbitAct.png", "fitbitAct.png", "walkStats.png", "",""];
 
   // Computed properties -------------------------------------------
 

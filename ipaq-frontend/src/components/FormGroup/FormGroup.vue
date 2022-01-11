@@ -19,6 +19,13 @@
       @validated="validatedfunct"
     >
     </vue-form-generator>
+    <br/>
+    <h4 v-if='fitbitSource!=""'> Tracked data </h4>
+    <img
+        id="fitbitTypeImg"
+        :src="getImgUrl(fitbitSource)"
+        v-if="fitbitSource != ''"
+      />
   </div>
 </template>
 
@@ -28,6 +35,11 @@
 #activityTypeImg {
   float: right;
   width: 100px;
+  height: auto;
+}
+#fitbitTypeImg {
+  float: center;
+  width: 25rem;
   height: auto;
 }
 @media only screen and (min-width: 500px) {
