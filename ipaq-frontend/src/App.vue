@@ -2,11 +2,12 @@
   <b-container id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/Qshort">IPAQ short</router-link> |
-       <router-link to="/Qlong">IPAQ Long</router-link> |
-        <router-link to="/Qelderly">IPAQ Elderly</router-link> |
       <router-link to="/FAQ">FAQ</router-link> |
-      <router-link to="/about">About</router-link> |
+      <router-link to="/about">About</router-link> 
+      -------------------
+       <router-link to="/Qshort">IPAQ short</router-link> |
+       <router-link to="/Qlong">IPAQ Long</router-link> |
+        <router-link to="/Qelderly">IPAQ Elderly</router-link> 
     </div>
     <router-view />
     <Chatbot />
