@@ -104,8 +104,8 @@ export default class Home extends Vue {
    { 
       id:2,
       showif: function(model){
-        console.log("IN SHOWIF");
-        console.log(model);
+    
+  
         if (model.age !== undefined){
           return model.age < 70;
         }
@@ -165,6 +165,8 @@ export default class Home extends Vue {
       //$(".form-control").attr('style', 'font-size: 110% !important');
       $("#app").attr('style', 'zoom: 130%');
       $(".form-control").attr('style', 'zoom: 130%');
+      //Set formtype to eldery
+      this.model['formtype']='elderly';
       
     }
     // FILL STORE

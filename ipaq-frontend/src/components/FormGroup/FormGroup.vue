@@ -43,7 +43,8 @@
   height: auto;
   border: 0.01rem solid #021a40;
   padding:1px;
-   background-color:#555;
+  background-color:#555;
+  margin-bottom: 1.5rem;
   
 }
 @media only screen and (min-width: 500px) {
