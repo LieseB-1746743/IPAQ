@@ -45,7 +45,7 @@ export default class Questionnaire extends Vue {
   private submit = false;
   private pageIsValidated = true;
   private imagesWithPageAsIndex = ["sitting.png","walking.jpg","","",""]
-  private fitbitWithPageAsIndex = ["", "walkStats","fitbitAct.png", "fitbitAct.png",""];
+  private fitbitWithPageAsIndex = ["", "walkStats.png","fitbitAct.png", "fitbitAct.png",""];
 
   // Computed properties -------------------------------------------
 

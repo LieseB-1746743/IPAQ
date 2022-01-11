@@ -41,6 +41,10 @@
   float: center;
   width: 25rem;
   height: auto;
+  border: 0.01rem solid #021a40;
+  padding:1px;
+   background-color:#555;
+  
 }
 @media only screen and (min-width: 500px) {
   #activityTypeImg {
