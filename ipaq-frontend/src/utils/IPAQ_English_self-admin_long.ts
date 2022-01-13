@@ -79,7 +79,7 @@ const pages: any = [
             {
               type: "select",
               label:
-                "During the <b>last 7 days</b>, on how many days did you do <b>vigorous</b> physical activities like heavy lifting, digging, heavy construction, or climbing up stairs <b>as part of your work</b>? Think about only those physical activities that you did for at least 10 minutes at a time.",
+                "During the <b>last 7 days</b>, on how many days did you do <b>vigorous</b> physical activities like heavy lifting, digging, heavy construction, or climbing up stairs <b>as part of your work</b>? <br/>Think about only those physical activities that you did for at least 10 minutes at a time.",
               model: "jobVigorousDays",
               values: function () {
                 return [
@@ -163,7 +163,7 @@ const pages: any = [
             {
               type: "select",
               label:
-                "Again, think about only those physical activities that you did for at least 10 minutes at a time. During the <b>last 7 days</b>, on how many days did you do <b>moderate</b> physical activities like carrying light loads <b>as part of your work</b>? Please do not include walking.",
+                "During the <b>last 7 days</b>, on how many days did you do <b>moderate</b> physical activities like carrying light loads <b>as part of your work</b>? <br/>Please do not include walking. <br/>Again, think about only those physical activities that you did for at least 10 minutes at a time.",
               model: "jobModerateDays",
               values: function () {
                 return [
@@ -246,7 +246,7 @@ const pages: any = [
             {
               type: "select",
               label:
-                "During the <b>last 7 days</b>, on how many days did you <b>walk</b> for at least 10 minutes at a time <b>as part of your work</b>? Please do not count any walking you did to travel to or from work.",
+                "During the <b>last 7 days</b>, on how many days did you <b>walk</b> for at least 10 minutes at a time <b>as part of your work</b>? <br/>Please do not count any walking you did to travel to or from work.",
               model: "jobWalkingDays",
               values: function () {
                 return [
@@ -414,7 +414,7 @@ const pages: any = [
             {
               type: "select",
               label:
-                "During the <b>last 7 days</b>, on how many days did you <b>bicycle</b> for at least 10 minutes at a time to go <b>from place to place?</b>?",
+                "During the <b>last 7 days</b>, on how many days did you <b>bicycle</b> for at least 10 minutes at a time to go <b>from place to place?</b>",
               model: "transBicycleDays",
               values: function () {
                 return [
@@ -493,7 +493,7 @@ const pages: any = [
             {
               type: "select",
               label:
-                "During the <b>last 7 days</b>, on how many days did you <b>walk</b> for at least 10 minutes at a time <b>as part of your work</b>? Please do not count any walking you did to travel to or from work.",
+                "During the <b>last 7 days</b>, on how many days did you <b>walk</b> for at least 10 minutes at a time <b>as part of your work</b>? <br/>Please do not count any walking you did to travel to or from work.",
               model: "transWalkingDays",
               values: function () {
                 return [
@@ -578,7 +578,7 @@ const pages: any = [
             {
               type: "select",
               label:
-                "Think about only those physical activities that you did for at least 10 minutes at a time. During the <b>last 7 days</b>, on how many days did you do <b>vigorous</b> physical activities like heavy lifting, chopping wood, shoveling snow, or digging <b>in the garden or yard</b>?",
+                "During the <b>last 7 days</b>, on how many days did you do <b>vigorous</b> physical activities like heavy lifting, chopping wood, shoveling snow, or digging <b>in the garden or yard</b>? <br/> Think about only those physical activities that you did for at least 10 minutes at a time.",
               model: "gardenVigorousDays",
               values: function () {
                 return [
@@ -661,7 +661,7 @@ const pages: any = [
             {
               type: "select",
               label:
-                "Again, think about only those physical activities that you did for at least 10 minutes at a time. During the <b>last 7 days</b>, on how many days did you do <b>moderate</b> activities activities like carrying light loads, sweeping, washing windows, and raking <b>in the garden or yard</b>?",
+                "During the <b>last 7 days</b>, on how many days did you do <b>moderate</b> activities activities like carrying light loads, sweeping, washing windows, and raking <b>in the garden or yard</b>? <br/>Again, think about only those physical activities that you did for at least 10 minutes at a time.",
               model: "gardenModerateDays",
               values: function () {
                 return [
@@ -740,7 +740,7 @@ const pages: any = [
             {
               type: "select",
               label:
-                "Once again, think about only those physical activities that you did for at least 10 minutes at a time. During the <b>last 7 days</b>, on how many days did you do <b>moderate</b> activities like carrying light loads, washing windows, scrubbing floors and sweeping <b>inside your home</b>?",
+                "During the <b>last 7 days</b>, on how many days did you do <b>moderate</b> activities like carrying light loads, washing windows, scrubbing floors and sweeping <b>inside your home</b>? <br/>Once again, think about only those physical activities that you did for at least 10 minutes at a time.",
               model: "insideModerateDays",
               values: function () {
                 return [
@@ -853,7 +853,7 @@ const pages: any = [
           fields: [
             {
               label:
-                "Think about only those physical activities that you did for at least 10 minutes at a time. During the <b>last 7 days</b>, on how many days did you do <b>vigorous</b> physical activities like aerobics, running, fast bicycling, or fast swimming <b>in your leisure time</b>?",
+                "During the <b>last 7 days</b>, on how many days did you do <b>vigorous</b> physical activities like aerobics, running, fast bicycling, or fast swimming <b>in your leisure time</b>? <br/>Think about only those physical activities that you did for at least 10 minutes at a time.?",
             },
           ],
 
@@ -908,7 +908,7 @@ const pages: any = [
             {
               type: "select",
               label:
-                "Again, think about only those physical activities that you did for at least 10 minutes at a time. During the <b>last 7 days</b>, on how many days did you do <b>vigorous</b> activities activities like aerobics, running, fast bicycling, or fast swimming <b>in your leisure time</b>?",
+                "During the <b>last 7 days</b>, on how many days did you do <b>vigorous</b> activities activities like aerobics, running, fast bicycling, or fast swimming <b>in your leisure time</b>? <br/>Again, think about only those physical activities that you did for at least 10 minutes at a time.",
               model: "leisureVigorousDays",
               values: function () {
                 return [
@@ -987,7 +987,7 @@ const pages: any = [
             {
               type: "select",
               label:
-                "Again, think about only those physical activities that you did for at least 10 minutes at a time. During the <b>last 7 days</b>, on how many days did you do <b>moderate</b> activities like bicycling at a regular pace, swimming at a regular pace, and doubles tennis <b>in your leisure time</b>?",
+                "During the <b>last 7 days</b>, on how many days did you do <b>moderate</b> activities like bicycling at a regular pace, swimming at a regular pace, and doubles tennis <b>in your leisure time</b>? <br/>Again, think about only those physical activities that you did for at least 10 minutes at a time.",
               model: "leisureModerateDays",
               values: function () {
                 return [
