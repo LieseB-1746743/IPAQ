@@ -12,10 +12,10 @@
   <b-row align-v="end" align-h="end">
     <b-col sm="auto" align-self="end" >
       <!-- HELP :p krijg em nie links -->
-      <b-button align-self="start" align-h="start" v-if="submit" id="change-btn" variant="outline-secondary" size="lg" v-on:click="ChangeBtnClicked" >Change</b-button>
-      <b-button class="questionnaire_next_btn" v-if="!submit && pageIsValidated " id="next-btn" variant="outline-primary" size="lg" v-on:click="NextBtnClicked">Next</b-button>
-      <b-button class="questionnaire_next_btn" v-if="!submit && !pageIsValidated " id="next-btn" variant="outline-secondary" size="lg" v-on:click="NextBtnClicked" disabled>Next</b-button>
-      <b-button v-if="submit" id="submit-btn" variant="outline-primary" size="lg" v-on:click="SubmitBtnClicked" >Submit</b-button>
+      <b-button align-self="start" align-h="start" v-if="submit" class="change-btn" variant="outline-secondary" size="lg" v-on:click="ChangeBtnClicked" >Change</b-button>
+      <b-button class="questionnaire_next_btn next-btn" v-if="!submit && pageIsValidated " variant="outline-primary" size="lg" v-on:click="NextBtnClicked">Next</b-button>
+      <b-button class="questionnaire_next_btn next-btn" v-if="!submit && !pageIsValidated " variant="outline-secondary" size="lg" v-on:click="NextBtnClicked" disabled>Next</b-button>
+      <b-button v-if="submit" class="submit-btn" variant="outline-primary" size="lg" v-on:click="SubmitBtnClicked" >Submit</b-button>
     </b-col>   
   </b-row>
 </div>
@@ -94,25 +94,10 @@ export default class Questionnaire extends Vue {
 </script>
 
 <style scoped>
-#next-btn {
-  margin-top: 0rem;
-}
-#change-btn {
-  margin-right: 2rem;
-  margin-bottom: 2rem;
-}
-#submit-btn {
-  margin-right: 2rem;
-  margin-bottom: 2rem;
-}
-
   /* to create space between HOURS and MINUTES INPUT => does not work */
   #hours-per-days{
     padding-right: 5rem;
     color: red;
     background-color: red;
   }
-  
-  
-  		
 </style>

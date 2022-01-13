@@ -33,6 +33,7 @@ export default class App extends Vue {}
 
 #nav {
   padding: 30px;
+  text-align: center;
 
   a {
     font-weight: bold;
@@ -44,7 +45,51 @@ export default class App extends Vue {}
   }
 }
 
+@media screen and (min-width: 768px) {
+  .centeredbox {
+    width: 50%;
+    margin: auto;
+  }
+}
+
+.btn-primary {
+  background-color: #4fc08d !important;
+  color: #fff !important;
+  border-color: #4fc08d !important;
+}
+
+.btn-outline-primary {
+  background-color: #fff !important;
+  color: #42b983 !important;
+  border-color: #4fc08d !important;
+}
+
+.btn-outline-primary:hover {
+  color: #fff !important;
+  background-color: #4fc08d !important;
+  border-color: #4fc08d !important;
+}
+
+.btn-outline-primary:focus {
+  box-shadow: 0 0 0.25rem #2c3e50 !important;
+}
+
 .questionnaire_next_btn {
  margin-bottom: 20px;
 }
+
+.next-btn {
+  margin-top: 0rem;
+}
+
+.change-btn {
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+}
+
+.submit-btn {
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+}
+
 </style>

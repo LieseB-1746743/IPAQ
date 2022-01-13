@@ -1,20 +1,40 @@
 <template>
-  <div v-if="user.first_name !== ''">
-    <p>Hi {{user.first_name}}</p>
+  <div class="centeredbox" v-if="user.first_name !== ''">
+    <h4 style="margin-bottom: 16px;" >Hi {{user.first_name}}!</h4>
     <div v-if="user.age >= 70">
-        <p>Because you are {{ user.age }} years old, you have to fill in the questionnaire for persons older than 70. Please click continue to start the questionnaire.</p>
+        <p>
+            Thank you for filling in the registration form.
+            Because you are {{ user.age }} years old, you have to fill in the questionnaire for persons older than 70. 
+            At the end of this questionnaire, you can verify your answers and change them if necessary.
+            <br/><br/>
+            Please click continue to start the questionnaire.
+        </p>
     </div>
     <div v-else>
-        <p v-if="user.formtype === 'short'">Because you chose to fill in the short form, the IPAQ short questionnaire will start when you click continue.</p>
-        <p v-else>Because you chose to fill in the long form, the IPAQ long questionnaire will start when you click continue.</p>
+        <p v-if="user.formtype === 'short'">
+            Thank you for filling in the registration form.
+            You chose tho fill in the short version of the IPAQ questionnaire.
+            At the end of this questionnaire, you can verify your answers and change them if necessary.
+            <br/><br/>
+            Please click continue to start the short questionnaire.
+        </p>
+        <p v-else>
+            Thank you for filling in the registration form.
+            You chose tho fill in the long version of the IPAQ questionnaire.
+            At the end of this questionnaire, you can verify your answers and change them if necessary.
+            <br/><br/>
+            Please click continue to start the short questionnaire.
+        </p>
     </div>
-    <b-button variant="primary" v-on:click="onContinue">Continue</b-button>
+    
+    <div class="d-grid gap-2">
+        <b-button variant="primary" size="lg"  v-on:click="onContinue">Continue</b-button>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import $ from "jquery";
 
 import LoginState from "../store/modules/types";
 import store from '../store/index';
@@ -65,3 +85,6 @@ export default class Redirect extends Vue {
 }
 
 </script>
+
+<style scoped>
+</style>

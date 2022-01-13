@@ -1,5 +1,6 @@
 <template>
-  <div class="home" id="home" >
+  <div class="centeredbox" id="home" >
+    <h1 style="margin-bottom: 16px;">Register</h1>
     <vue-form-generator 
       v-for="schema in filteredSchemas"
       :key="schema.id"
@@ -8,8 +9,16 @@
       :options="formOptions" 
       @validated="onValidated">
     </vue-form-generator>
-    <b-button v-if="userCanContinue" variant="primary" v-on:click="onSubmit">Continue</b-button>
-    <b-button v-else variant="primary" disabled>Continue</b-button>
+    <b-form-checkbox 
+      id="agree-login-checkbox"
+      v-model="agree" 
+      value="accepted"
+      unchecked-value="not_accepted">I agree that my data will be saved to ...</b-form-checkbox>
+    <div class="d-grid gap-2">
+    <!-- <div class="d-grid gap-2  col-6 mx-auto"> --> <!-- 50% width button -->
+      <b-button v-if="userCanContinue" id="register-btn" variant="primary" size="lg" v-on:click="onSubmit">Continue</b-button>
+      <b-button v-else variant="primary" id="register-btn" size="lg" disabled>Continue</b-button>
+    </div>
   </div>
 </template>
 
@@ -35,6 +44,8 @@ export default class Home extends Vue {
   // DATA ----------------------------------------------------------
   private validInput = false;
 
+  private agree = "not_accepted";
+
   private formOptions: any = {
     validateAfterLoad: false,
     validateAfterChanged: true
@@ -54,6 +65,7 @@ export default class Home extends Vue {
           inputType: "text",
           label: "First name",
           model: "first_name",
+          attributes: {'autofocus':true},
           required: true,
         },
         {
@@ -139,10 +151,13 @@ export default class Home extends Vue {
       "age",
       "gender",
       "email",
-      "tel"
+      "tel",
     ];
 
     if (! this.validInput) {
+      return false;
+    }
+    if (this.agree !== "accepted") {
       return false;
     }
     for (const input of inputs) {
@@ -195,6 +210,11 @@ export default class Home extends Vue {
 
 <style scoped>
 #home{  
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
 }
+
+#register-btn {
+  margin-top: 16px !important;
+}
+
 </style>

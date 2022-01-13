@@ -30,25 +30,23 @@
           align-self="start"
           align-h="start"
           v-if="submit"
-          id="change-btn"
+          class="change-btn"
           variant="outline-secondary"
           size="lg"
           v-on:click="ChangeBtnClicked"
           >Change</b-button
         >
         <b-button
-          class="questionnaire_next_btn" 
+          class="questionnaire_next_btn next-btn" 
           v-if="!submit && (pageIsValidated && this.pages[0].model.job !=-1) "
-          id="next-btn"
           variant="outline-primary"
           size="lg"
           v-on:click="NextBtnClicked"
           >Next</b-button
         >
         <b-button
-          class="questionnaire_next_btn" 
+          class="questionnaire_next_btn next-btn" 
           v-if="!submit &&  (!pageIsValidated || this.pages[0].model.job ==-1)"
-          id="next-btn"
           variant="outline-secondary"
           size="lg"
           v-on:click="NextBtnClicked"
@@ -57,7 +55,7 @@
         >
         <b-button
           v-if="submit"
-          id="submit-btn"
+          class="submit-btn"
           variant="outline-primary"
           size="lg"
           v-on:click="SubmitBtnClicked"
@@ -144,17 +142,6 @@ export default class Questionnaire extends Vue {
 </script>
 
 <style scoped>
-#next-btn {
-  margin-top: 0rem;
-}
-#change-btn {
-  margin-right: 2rem;
-  margin-bottom: 2rem;
-}
-#submit-btn {
-  margin-right: 2rem;
-  margin-bottom: 2rem;
-}
 
 /* to create space between HOURS and MINUTES INPUT => does not work */
 #hours-per-days {

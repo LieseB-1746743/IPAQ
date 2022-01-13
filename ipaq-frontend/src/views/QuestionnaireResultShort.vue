@@ -1,8 +1,8 @@
 <template>
 <div>
   <p>Thank you for filling in this survey.</p>
-   <b-button v-if="!showResults" variant="outline-primary" size="medium" v-on:click="showResultsClicked">Show my IPAQ rapport</b-button>
-   <b-button v-if="showResults" variant="outline-secondary" size="medium" v-on:click="hideResultsClicked">Hide my IPAQ rapport</b-button>
+   <b-button v-if="!showResults" variant="outline-primary" size="medium" v-on:click="showResultsClicked">Show my results</b-button>
+   <b-button v-if="showResults" variant="outline-secondary" size="medium" v-on:click="hideResultsClicked">Hide my results</b-button>
    <ResultOverview v-show="showResults" :results="this.results" :IPAQlong="false" :user="this.user" :formTypeUPPER="this.formTypeUPPER" />
 </div>
 </template>
