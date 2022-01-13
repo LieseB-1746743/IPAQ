@@ -151,7 +151,7 @@ const pages: any = [
                   fields: [
                   {
                       type: 'select',
-                      label: 'During the <b>last 7 days</b>, on how many days did you do <b>moderate</b> physical activities like carrying light loads, bicycling at a regular pace, or doubles tennis? Think <i>only about those physical activities that you did for at least 10 minutes</i> at a time. Do not include walking.',
+                      label: 'During the <b>last 7 days</b>, on how many days did you do <b>moderate</b> physical activities like carrying light loads, bicycling at a regular pace, or doubles tennis? <br/>Think <i>only about those physical activities that you did for at least 10 minutes</i> at a time. Do not include walking.',
                       model: 'moderateDays',
                       values: function() {
                           return [
@@ -236,7 +236,7 @@ const pages: any = [
                 fields: [
                 {
                     type: 'select',
-                    label: 'During the <b>last 7 days</b>, on how many days did you do <b>vigorous</b> physical activities like heavy lifting, heavier garden or construction work, chopping woods, aerobics, jogging/running or fast bicycling? Think <i>only about those physical activities that you did for at least 10 minutes</i> at a time.',
+                    label: 'During the <b>last 7 days</b>, on how many days did you do <b>vigorous</b> physical activities like heavy lifting, heavier garden or construction work, chopping woods, aerobics, jogging/running or fast bicycling? <br/>Think <i>only about those physical activities that you did for at least 10 minutes</i> at a time.',
                     model: 'vigorousDays',
                     values: function() {
                         return [

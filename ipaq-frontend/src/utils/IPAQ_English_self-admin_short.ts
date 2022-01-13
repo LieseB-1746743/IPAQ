@@ -113,7 +113,7 @@ const pages: any = [
             {
               type: "select",
               label:
-                "During the <b>last 7 days</b>, on how many days did you do <b>moderate</b> physical activities like carrying light loads, bicycling at a regular pace, or doubles tennis? Do not include walking.",
+                "During the <b>last 7 days</b>, on how many days did you do <b>moderate</b> physical activities like carrying light loads, bicycling at a regular pace, or doubles tennis? <br/>Do not include walking.",
               model: "moderateDays",
               values: function () {
                 return [
