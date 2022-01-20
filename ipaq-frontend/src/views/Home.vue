@@ -21,7 +21,7 @@
       id="agree-login-checkbox"
       v-model="agree" 
       value="accepted"
-      unchecked-value="not_accepted">I agree that my data will be saved to ...</b-form-checkbox>
+      unchecked-value="not_accepted">&nbsp;I agree that my data will be saved according to our <router-link to="/about"><a>policy</a></router-link>.</b-form-checkbox>
     <div class="d-grid gap-2">
     <!-- <div class="d-grid gap-2  col-6 mx-auto"> --> <!-- 50% width button -->
       <b-button v-if="userCanContinue" id="register-btn" variant="primary" size="lg" v-on:click="onSubmit">Continue</b-button>
@@ -74,7 +74,7 @@ export default class Home extends Vue {
           label: "First name",
           model: "first_name",
           attributes: {'autofocus':true},
-          required: true,
+          required: true
         },
         {
           type: "input",

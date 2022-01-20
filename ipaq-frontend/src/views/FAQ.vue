@@ -2,8 +2,7 @@
   <div class="FAQ">
     <h1>IPAQ - Tool FAQ</h1>
     <overline>
-      Our <b>IPAQ assistent</b> (in the left corner) is always
-      <b> happy to answer your questions</b> !
+      Our <b>IPAQ assistant</b> in the left bottom corner is always<b> happy to answer your questions</b>!
     </overline>
     <p>
       Ask Away
@@ -25,25 +24,23 @@
     </p>
     <h5>Some Tips</h5>
     <li>
-      Always check the ANSWERS OVERVIEW |||| TODO: Add suspicious input flags in
-      the OVERVIEW ?
+      Always check the <b>answer overview</b> at the end of the questionnaire. You can change your answers there.
     </li>
     <li>Use the <b>tab button</b> to navigate faster through the questions</li>
     <li>
-      Use the <b>ENTER button</b> to navigate faster through the pages (To
-      prevent skipping questions -> first use tab to highlight next-btn)
+      Use the <b>enter button</b> to navigate faster through the pages.
     </li>
     <br />
     <h5>Different sorts of activities</h5>
     <img
       src="../assets/vigorousVSmoderate2.jpg"
-      height="500rem"
-      width="500rem"
+      height="400rem"
+      width="400rem"
     />
     <img
       src="../assets/moderateVSvigorous.png"
-      height="500rem"
-      width="500rem"
+      height="400rem"
+      width="400rem"
     />
   </div>
 </template>
