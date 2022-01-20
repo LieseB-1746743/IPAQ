@@ -13,6 +13,7 @@
     </div>
     <div v-if="submit">
       <h1>Answers</h1>
+      <p>Please verify you answers. You can change them if necessary.</p>
       <AnswerOverview
         v-for="page in pages"
         :key="page.pageID"

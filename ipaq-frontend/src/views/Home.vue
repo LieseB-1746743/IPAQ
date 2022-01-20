@@ -190,7 +190,7 @@ export default class Home extends Vue {
       email: "kris.luyten@uhasselt.be",
       tel: "+32586975632",
       gender: "M",
-      formtype: "long"
+      formtype: "short"
     };
     
     store.commit('app/setUser', user);

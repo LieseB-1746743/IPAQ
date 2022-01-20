@@ -24,6 +24,7 @@ const pages: any = [
               label:
                 "During the <b>last 7 days</b>, on how many days did you do <b>vigorous</b> physical activities like heavy lifting, digging, aerobics, or fast bicycling?",
               model: "vigorousDays",
+              hint: "Your Fitbit has registered 7 days of vigorous physical activities.",
               values: function () {
                 return [
                   { id: 0, name: "No vigorous physical activities" },
@@ -50,6 +51,7 @@ const pages: any = [
         schema: {
           fields: [
             {
+              hint: "Your Fitbit has registered an average of 1 hour and 45 minutes.",
               label:
                 "How much time did you usually spend doing <b>vigorous</b> physical activities on one of those days?",
             },
@@ -199,6 +201,7 @@ const pages: any = [
               type: "select",
               label:
                 "During the <b>last 7 days</b>, on how many days did you do <b>walk</b> for at least 10 minutes at a time?",
+                hint:"Your Fitbit has registered 7 days of walking.",
               model: "walkingDays",
               values: function () {
                 return [
@@ -227,6 +230,8 @@ const pages: any = [
             {
               label:
                 "How much time did you usually spend <b>walking</b> on one of those days?",
+                
+                hint:"Your Fitbit has registered an average of 0 hours and 57 minutes."
             },
           ],
 
