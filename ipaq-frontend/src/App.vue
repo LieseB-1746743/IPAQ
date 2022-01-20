@@ -58,6 +58,13 @@ export default class App extends Vue {}
   border-color: #4fc08d !important;
 }
 
+.btn-primary.disabled{
+  background-color: #F1F1F2 !important;
+  color:#939C9E !important;
+  pointer-events: none;
+  border-color: #F1F1F2 !important;
+}
+
 .btn-outline-primary {
   background-color: #fff !important;
   color: #42b983 !important;

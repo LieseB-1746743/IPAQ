@@ -1,6 +1,8 @@
 <template>
   <div class="panel-body">
     <div>
+
+      <!-- Title, icon and explanation of this part  -->
       <img
         id="activityTypeImg"
         :src="getImgUrl(imageSource)"
@@ -9,6 +11,13 @@
       <h2>{{ part.ipaqPartTitle }}</h2>
       <p>{{ part.ipaqPartAnnotation }}</p>
     </div>
+    
+    <!-- Fitbit data if available -->
+    <p v-if='fitbitSource!=""'> Your Fitbit activity data may help you with answering the following questions.</p>
+    <img v-if="fitbitSource != ''" :src="getImgUrl(fitbitSource)" class="rounded mx-auto d-block" style="margin-bottom: 20px; max-width: 350px; height=auto;"/>
+
+
+    <!-- Questions -->
     <h4>Questions</h4>
     <vue-form-generator
       v-for="item in filteredSchemas"
@@ -19,13 +28,6 @@
       @validated="validatedfunct"
     >
     </vue-form-generator>
-    <br/>
-    <h4 v-if='fitbitSource!=""'> Tracked data </h4>
-    <img
-        id="fitbitTypeImg"
-        :src="getImgUrl(fitbitSource)"
-        v-if="fitbitSource != ''"
-      />
   </div>
 </template>
 
@@ -37,16 +39,7 @@
   width: 100px;
   height: auto;
 }
-#fitbitTypeImg {
-  float: center;
-  width: 25rem;
-  height: auto;
-  border: 0.01rem solid #021a40;
-  padding:1px;
-  background-color:#555;
-  margin-bottom: 1.5rem;
-  
-}
+
 @media only screen and (min-width: 500px) {
   #activityTypeImg {
     width: 150px;

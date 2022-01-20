@@ -1,6 +1,14 @@
 <template>
   <div class="centeredbox" id="home" >
-    <h1 style="margin-bottom: 16px;">Register</h1>
+    <h3>Sign up</h3>
+    <div id="fitbit-wrapper">
+      <hr/>
+      <div class="d-grid gap-2">
+        <b-button class="fitbit" size="lg" v-on:click="onSubmitFitbit"><b-icon icon="smartwatch" aria-hidden="true"></b-icon>   Continue with Fitbit</b-button>
+      </div>
+      <i><p class="lg-btn-explain">Your Fitbit activity data will be shown during the questionnaire. This can help you with answering the questions.</p></i>
+      <hr/>
+    </div>
     <vue-form-generator 
       v-for="schema in filteredSchemas"
       :key="schema.id"
@@ -174,6 +182,21 @@ export default class Home extends Vue {
     this.validInput = isValid;
   }
 
+  private onSubmitFitbit(){
+     let user: LoginState = {
+      first_name: "Kris",
+      last_name: "Luyten",
+      age: 38,
+      email: "kris.luyten@uhasselt.be",
+      tel: "+32586975632",
+      gender: "M",
+      formtype: "long"
+    };
+    
+    store.commit('app/setUser', user);
+    this.redirectToQuestionnaire(user);
+  }
+
   private onSubmit(){
     if (this.model["age"] > 65) {
      // $("#app").attr('style', 'font-size: 200% !important');
@@ -215,6 +238,20 @@ export default class Home extends Vue {
 
 #register-btn {
   margin-top: 16px !important;
+}
+
+#fitbit-wrapper{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.lg-btn-explain{
+  font-size: 80%;
+}
+
+.btn.fitbit{
+  background-color:#00b0b9 !important;
+  border-color:#00b0b9 !important;
 }
 
 </style>
