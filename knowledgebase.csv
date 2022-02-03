@@ -1,6 +1,6 @@
 Question,Answer
-"How is my IPAQ score calculated?","TODO"
-"Why do you need my data?","TODO"
+"How is my IPAQ score calculated?","We use the predefined IPAQ scoring protocol. Details can be found on their website https://sites.google.com/site/theipaq/scoring-protocol."
+"Why do you need my data?","I would suggest to have a look at our about page: http://localhost:8080/about. There you can read everything about why, how long,... we keep your data."
 "I want you to delete my data.","That is possible. More information can be found at our about page (http://localhost:8080/about), or you can just send an email to ..."
 "Can I change previous answers?","At the end of the questionnaire, you will be able to review your answers and change them if necessary."
 "What are vigorous activities?","Vigorous activities are high intensity activities that require much energy, such as running, rope jumping, playing football, etc."
