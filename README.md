@@ -5,7 +5,7 @@ This is a digital version of the International Physical Activity Questionnaire (
 - English version for people younger than 65
   - Short version
   - Long version
-- English version for elderly people ($\le$ 65)
+- English version for elderly people (<= 65)
 
 Other versions can be added easily.
 
