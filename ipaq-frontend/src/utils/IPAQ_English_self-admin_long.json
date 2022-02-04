@@ -1,0 +1,21 @@
+{
+    "parts": [{"id": 1, "partTitle":"PART 1: JOB-RELATED PHYSICAL ACTIVITY"}, "partAnnotation":"The first section is about your work. This includes paid jobs, farming, volunteer work, course work, and any other unpaid work that you did outside your home. Do not include unpaid work you might do around your home, like housework, yard work, general maintenance, and caring for your family. These are asked in Part 3."],
+    "pages": [
+        {/* PAGE 1 */},
+        {/* PAGE 2 */},
+        {"partID": 1, "questions": [
+            {/* QUESTION */},
+            {/* QUESTION */}
+        ]}
+    ]
+[
+{
+"ipaqPart":"",
+"ipaqPartAnnotation":,
+"question":"Do you currently have a job or do any unpaid work outside your home?",
+"schema": []
+}
+
+
+]    
+}

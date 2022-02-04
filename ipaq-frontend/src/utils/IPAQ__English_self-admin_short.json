@@ -1,0 +1,90 @@
+{
+    "parts": [
+        {  
+            "partID":0,
+            "ipaqPartTitle":"Vigorous activities",
+            "ipaqPartAnnotation": "Think about all the vigorous activities that you did in the last 7 days. Vigorous physical activities refer to activities that take hard physical effort and make you breathe much harder than normal. Think only about those physical activities that you did for at least 10 minutes at a time."
+        },
+        {  
+            "partID":1,
+            "ipaqPartTitle":"Moderate activities",
+            "ipaqPartAnnotation": "Think about all the moderate activities that you did in the last 7 days. Moderate activities refer to activities that take moderate physical effort and make you breathe somewhat harder than normal. Think only about those physical activities that you did for at least 10 minutes at a time."
+       }
+       ,
+        {  
+            "partID":2,
+            "ipaqPartTitle":"Walking",
+            "ipaqPartAnnotation": "Think about the time you spent walking in the last 7 days. This includes at work and at home, walking to travel from place to place, and any other walking that you have done solely for recreation, sport, exercise, or leisure."
+       }
+       ,
+        {  
+            "partID":3,
+            "ipaqPartTitle":"Sitting",
+            "ipaqPartAnnotation": "The last question is about the time you spent sitting on weekdays during the last 7 days. Include time spent at work, at home, while doing course work and during leisure time. This may include time spent sitting at a desk, visiting friends, reading, or sitting or lying down to watch television."
+       }
+    ],
+    "pages": [
+        {
+            "partID": 0,
+            "questions": [
+                {
+                    "schema":[
+                        { 
+                            "name":"vigorous_days",
+                            "label": "During the <b>last 7 days</b>, on how many days did you do <b>vigorous</b> physical activities like heavy lifting, digging, aerobics, or fast bicycling?",
+                            "type":"select",
+                            "value": "0",
+                            "options": {
+                                "0": "No vigorous physical activities",
+                                "1": "1 day",
+                                "2": "2 days",
+                                "3": "3 days",
+                                "4": "4 days",
+                                "5": "5 days",
+                                "6": "6 days",
+                                "7": "7 days"
+                            },
+                            "validation": "required"
+                        },
+                        {
+                            "name": "vigorous_time",
+                            "label": "How much time did you usually spend doing vigorous physical activities on one of those days?",
+                            "type": "time",
+                            "value":"00:00"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "partID": 1,
+            "questions": [
+                {
+                    "question": "During the last 7 days, on how many days did you do moderate physical  activities like carrying light loads, bicycling at a regular pace, or doubles tennis? Do not include walking."
+                },
+                {
+                    "question": "How much time did you usually spend doing moderate physical activities on one of those days?"
+                }
+            ]
+        },
+        {
+            "partID": 2,
+            "questions": [
+                {
+                    "question": "During the last 7 days, on how many days did you walk for at least 10 minutes at a time?"
+                }, 
+                {
+                    "question": "How much time did you usually spend walking on one of those days?"
+                }
+            ]
+        },
+        {
+            "partID": 3,
+            "questions": [
+                {
+                    "question": "During the last 7 days, how much time did you spend sitting on a week day?"
+                }
+            ]
+        }
+    ]
+}
