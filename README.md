@@ -17,6 +17,7 @@ Start frontend:
 
 ```
 cd ipaq-frontend
+npm install
 npm run serve
 ```
 
@@ -24,5 +25,6 @@ Start backend:
 
 ```
 cd backend
+npm install
 npm run start
 ```
