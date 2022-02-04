@@ -23,7 +23,7 @@
             You chose tho fill in the long version of the IPAQ questionnaire.
             At the end of this questionnaire, you can verify your answers and change them if necessary.
             <br/><br/>
-            Please click continue to start the short questionnaire.
+            Please click continue to start the questionnaire.
         </p>
     </div>
     

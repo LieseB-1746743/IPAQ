@@ -2,15 +2,15 @@ const pages: any = [
   {
     pageID: 1,
     model: {
-      vigorousDays: 0,
-      moderateDays: 0,
-      walkingDays: 0,
-      moderateTimeHours: 0,
-      moderateTimeMinutes: 0,
-      vigorousTimeHours: 0,
-      vigorousTimeMinutes: 0,
+      vigorousDays: 7,
+      moderateDays: 7,
+      walkingDays: 7,
+      moderateTimeHours: 1,
+      moderateTimeMinutes: 45,
+      vigorousTimeHours: 1,
+      vigorousTimeMinutes: 45,
       walkingTimeHours: 0,
-      walkingTimeMinutes: 0,
+      walkingTimeMinutes: 57,
       sittingTimeHours: 0,
       sittingTimeMinutes: 0,
     },
@@ -117,6 +117,7 @@ const pages: any = [
               label:
                 "During the <b>last 7 days</b>, on how many days did you do <b>moderate</b> physical activities like carrying light loads, bicycling at a regular pace, or doubles tennis? <br/>Do not include walking.",
               model: "moderateDays",
+              hint: "Your Fitbit has registered 7 days of moderate physical activities.",
               values: function () {
                 return [
                   { id: 0, name: "No moderate physical activities" },
@@ -142,6 +143,7 @@ const pages: any = [
         schema: {
           fields: [
             {
+              hint: "Your Fitbit has registered an average of 1 hour and 45 minutes.",
               label:
                 "How much time did you usually spend doing <b>moderate</b> physical activities on one of those days?",
             },

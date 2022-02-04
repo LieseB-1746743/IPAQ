@@ -21,18 +21,24 @@ export default class AnswerOverview extends Vue {
   mounted() {
     console.log(this.schemas);
     this.partTitle = String(this.parts[this.partID - 1].ipaqPartTitle);
+    var zeroDays = false;
     for (const schema of this.schemas) {
       for (const field of schema.schema.fields) {
         if (this.model != undefined) {
           const answer = this.model[field.model];
           if (answer != undefined) {
+            if (answer == 0) {
+              zeroDays = true;
+            } else {
+              zeroDays = false;
+            }
             const question = String(field.label);
             this.questionAnswerPairs.push([question, answer]);
           }
         }
       }
 
-      if (schema.schema.groups !== undefined) {
+      if (!zeroDays && schema.schema.groups !== undefined) {
         let answerDefined = true;
         let answer = "";
         for (const field of schema.schema.groups[0].fields) {
